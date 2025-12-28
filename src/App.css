@@ -1,0 +1,242 @@
+.App {
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.App-header {
+  text-align: center;
+  color: #00ff9d;
+  margin-bottom: 30px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.App-header h1 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+  text-shadow: 0 0 20px rgba(0, 255, 157, 0.5);
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  opacity: 0.7;
+  color: #8892b0;
+  font-weight: 300;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.control-panel {
+  background: rgba(17, 25, 40, 0.95);
+  border: 1px solid rgba(0, 255, 157, 0.2);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.connect-btn,
+.disconnect-btn {
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.connect-btn {
+  background: rgba(0, 255, 157, 0.1);
+  color: #00ff9d;
+  border: 1px solid #00ff9d;
+}
+
+.connect-btn:hover {
+  background: #00ff9d;
+  color: #0a0e27;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 255, 157, 0.4);
+}
+
+.disconnect-btn {
+  background: #e74c3c;
+  color: white;
+}
+
+.disconnect-btn:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(231, 76, 60, 0.4);
+}
+
+.error-message {
+  background: #ffebee;
+  color: #c62828;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 15px 0;
+}
+
+.status {
+  font-size: 1rem;
+  color: #8892b0;
+  margin-top: 10px;
+  font-family: 'Courier New', monospace;
+}
+
+.connected {
+  color: #00ff9d;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
+}
+
+.disconnected {
+  color: #64ffda;
+  font-weight: bold;
+  opacity: 0.5;
+}
+
+.channel-selector {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 255, 157, 0.2);
+}
+
+.selector-label {
+  color: #64ffda;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  font-weight: 300;
+}
+
+.channel-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.channel-btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 2px solid rgba(0, 255, 157, 0.3);
+  background: rgba(0, 255, 157, 0.05);
+  color: #64ffda;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.channel-btn:hover {
+  background: rgba(0, 255, 157, 0.1);
+  border-color: #00ff9d;
+  transform: translateY(-2px);
+}
+
+.channel-btn.active {
+  background: #00ff9d;
+  color: #0a0e27;
+  border-color: #00ff9d;
+  box-shadow: 0 0 20px rgba(0, 255, 157, 0.5);
+}
+
+.channel-info {
+  background: rgba(17, 25, 40, 0.95);
+  border: 1px solid rgba(0, 255, 157, 0.2);
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.channel-info h3 {
+  color: #00ff9d;
+  margin-bottom: 15px;
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+.all-channels-status {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mini-status {
+  color: #8892b0;
+  font-size: 0.9rem;
+  font-family: 'Courier New', monospace;
+  padding: 5px 15px;
+  background: rgba(0, 255, 157, 0.05);
+  border-radius: 4px;
+}
+
+.instructions {
+  background: rgba(17, 25, 40, 0.95);
+  border: 1px solid rgba(0, 255, 157, 0.2);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  margin-top: 20px;
+}
+
+.instructions h3 {
+  color: #00ff9d;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+.instructions h4 {
+  color: #64ffda;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+.instructions ol,
+.instructions ul {
+  text-align: left;
+  margin-left: 20px;
+  line-height: 1.8;
+  color: #8892b0;
+}
+
+.instructions li {
+  margin-bottom: 10px;
+}
+
+.channel-placement {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 255, 157, 0.2);
+}
+
+.note {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(0, 255, 157, 0.05);
+  border-left: 4px solid #00ff9d;
+  border-radius: 4px;
+  color: #8892b0;
+}
+
+@media (max-width: 768px) {
+  .App-header h1 {
+    font-size: 2rem;
+  }
+  
+  .container {
+    padding: 0 10px;
+  }
+}

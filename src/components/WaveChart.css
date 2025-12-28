@@ -1,0 +1,68 @@
+.wave-chart {
+  background: rgba(17, 25, 40, 0.95);
+  border: 1px solid rgba(0, 255, 157, 0.2);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.wave-chart h2 {
+  color: #00ff9d;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.2rem;
+}
+
+.chart-legend {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: #8892b0;
+  font-family: 'Courier New', monospace;
+}
+
+.legend-color {
+  width: 25px;
+  height: 4px;
+  border-radius: 2px;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.chart-canvas {
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  border-radius: 4px;
+  display: block;
+  background: #0a0e27;
+}
+
+.chart-info {
+  text-align: center;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  margin-top: 15px;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .wave-chart {
+    padding: 20px;
+  }
+  
+  .chart-legend {
+    gap: 15px;
+  }
+}
