@@ -340,13 +340,13 @@ Power Supply           | 5V         | ±5V dual
 
 ```bash
 # 1. Clone or navigate to project
-cd "c:\projects\project neuro"
+git clone https://github.com/NAMAN3342/project-neuro.git && cd project-neuro
 
 # 2. Install Node dependencies
 npm install
 
 # 3. Start development server
-npm start
+npm run dev
 
 # Browser will open to http://localhost:3000
 ```
@@ -422,13 +422,13 @@ Test:     Mental math → Beta increases
 
 ```bash
 # Navigate to project directory
-cd "c:\projects\project neuro"
+cd project neuro
 
 # Install dependencies (first time only)
 npm install
 
 # Start development server
-npm start
+npm run dev
 
 # Production build (optional)
 npm run build
@@ -992,10 +992,10 @@ We welcome contributions! Here's how you can help:
 
 ### **Development Setup**
 ```bash
-git clone <repository-url>
+git clone https://github.com/NAMAN3342/project-neuro.git
 cd project-neuro
 npm install
-npm start
+npm run dev
 ```
 
 ### **Testing**
@@ -1075,8 +1075,3 @@ Perfect for:
 - Meditation practitioners
 - BCI researchers
 
----
-
-**Version**: 1.0.0  
-**Last Updated**: December 28, 2025  
-**Status**: ✅ Production Ready
