@@ -45,5 +45,16 @@ Current implementation focuses on a hybrid input method:
 - Real-time, conversational speed decoding.
 - Integration with smart assistants (Alexa/Siri) via thought.
 
-## 🛠️ Developer Notes
+## � Confidentiality & Research Note
+
+**This is our most experimental and sensitive research area.**
+
+The "Silent Speech" interface relies on a novel method of mapping micro-EMG signals to phonemes, a technique we have developed through extensive experimentation.
+
+Due to the high value and potential security implications of this technology:
+*   **Proprietary Stack**: The signal decoding pipeline and the specific Transformer model architecture are **strictly confidential**.
+*   **No Source Release**: We are not releasing the source code for the speech decoding engine at this time.
+*   **Showcase Only**: This documentation serves to illustrate the *working principles* and *achieved milestones* of our research. We will provide video evidence of the system in action to demonstrate its validity.
+
+## �🛠️ Developer Notes
 This application requires significant training data. Users must perform a "Calibration Session" reading specific phonetically balanced sentences to train the local neural network model.

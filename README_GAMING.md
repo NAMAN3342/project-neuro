@@ -49,7 +49,18 @@ The system distinguishes these signals based on amplitude and frequency characte
 ### 3. Immersive Horror
 - Game difficulty scales with your fear level (detected via sudden Beta spikes and EMG tension).
 
-## 🚀 Getting Started
+## � Confidentiality & Research Note
+
+**This module represents a significant breakthrough in low-cost, high-performance BCI gaming.** 
+
+Achieving competitive-grade latency (<10ms) and signal separation on affordable hardware required novel signal processing algorithms and proprietary optimization techniques.
+
+To protect this intellectual property and prevent unauthorized replication of our core "Neuro-Game Loop" engine:
+*   **Source Code**: The specific implementation details of the EOG/EMG/EEG fusion engine are **closed source** and not included in the public repository.
+*   **Demonstration**: We provide full video demonstrations and compiled binaries to showcase the system's capabilities without revealing the underlying low-level stack.
+*   **Research Focus**: This project demonstrates that high-fidelity gaming control is possible without thousands of dollars in medical equipment, democratizing BCI technology.
+
+## �🚀 Getting Started
 
 1.  **Flash Firmware**: Upload `firmware/gaming_mode.ino` to your board.
 2.  **Position Headband**: Follow the [Gaming Electrode Guide](ELECTRODE_PLACEMENT.md#gaming).

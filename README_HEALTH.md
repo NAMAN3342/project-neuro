@@ -44,7 +44,18 @@ This application utilizes a dedicated AI pipeline:
 - **Hypnogram Generation**: Automated staging of sleep (REM, NREM, Awake).
 - **Apnea Detection**: Correlating movement artifacts with oxygen desaturation patterns (if SpO2 module attached).
 
-## 📊 Dashboard Features
+## � Confidentiality & Research Note
+
+**This module utilizes proprietary AI models for emotion and stress quantification.**
+
+The correlation between physiological biomarkers (EEG + Thermal) and psychological states is a complex, active field of research. Our "Sensor Fusion" algorithm represents a unique, low-compute approach to this problem.
+
+To protect the integrity of our research and preventing premature commercialization of our specific methodology:
+*   **Model Weights**: The pre-trained CNN-LSTM models and the specific architecture details are **confidential**.
+*   **Data Pipeline**: The preprocessing steps used to clean and normalize the thermal/EEG data fusion are proprietary.
+*   **Research Impact**: We are sharing the *results* and *capabilities* of this system to demonstrate the potential of AI-driven mental health monitoring on accessible hardware.
+
+## �📊 Dashboard Features
 
 - **Real-time "Inner Weather"**: Visual representation of current emotional state.
 - **Stress Accumulation Graph**: Daily load tracking.
