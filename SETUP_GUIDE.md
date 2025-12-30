@@ -1,10 +1,12 @@
 # Quick Setup Guide - 3-Channel EEG
 
+> **Research Prototype Notice**: This guide is intended for setting up the **Project Neuro Hardware Prototype**. The commercial version of the headband features a unified PCB design and does not require manual wiring.
+
 ## Step 1: Hardware Setup
 
 ### Materials Needed:
 - Arduino board (Uno/Nano/Mega)
-- 3x EEG sensors/amplifiers
+- 3x EEG sensors/amplifiers (Custom or Compatible Modules)
 - 6x EEG electrodes (3 active + 3 reference)
 - Conductive gel
 - USB cable

@@ -1,5 +1,7 @@
 # 🚀 Quick Reference Card
 
+> **Prototype Reference**: This card provides quick commands for the **Project Neuro Prototype**. Commercial API endpoints and hardware pinouts differ.
+
 ## Start the App
 
 ```bash

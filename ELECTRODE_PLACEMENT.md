@@ -1,5 +1,7 @@
 # EEG Electrode Placement Guide
 
+> **Prototype Note**: This guide details manual electrode placement for the **Project Neuro Hardware Prototype**. The final commercial headset features a fixed-array design that automatically aligns with these 10-20 system coordinates.
+
 ## International 10-20 System
 
 ### For Alpha Wave Detection (8-13 Hz) - Eyes Closed Response

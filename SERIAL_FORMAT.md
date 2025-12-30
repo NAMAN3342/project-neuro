@@ -1,5 +1,7 @@
 # Arduino Serial Output Format
 
+> **Note**: The data stream described below is the output of our proprietary signal conditioning pipeline. The raw sensor data undergoes significant on-chip processing before transmission to ensure signal fidelity.
+
 ## Expected Output Format
 
 The Arduino sends raw filtered EEG data in CSV format every sample (at 256 Hz):

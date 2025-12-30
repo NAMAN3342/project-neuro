@@ -1,5 +1,7 @@
 # 📊 System Architecture Diagram
 
+> **Confidentiality Note**: This diagram represents the high-level logical flow of the Project Neuro platform. Detailed schematics of the analog front-end (AFE) and the specific coefficients of the digital filter chain are proprietary and not disclosed in this repository.
+
 ## Complete Data Flow
 
 ```
@@ -11,7 +13,7 @@
     Electrode CH2 (Pz)     →  A1  ├─→  Arduino Uno/Nano
     Electrode CH3 (Fp1/Fp2)→  A2  ┘
     
-    Sample Rate: 128 Hz
+    Sample Rate: 256 Hz
     Baud Rate: 115200
 
                     ↓
@@ -24,22 +26,11 @@
     
     Raw ADC Value (0-1023)
            ↓
-    DC Removal Filter
-           ↓
-    ┌────────────────┐
-    │ Band Filters:  │
-    │  - Delta       │  (0.5-4 Hz)
-    │  - Theta       │  (4-8 Hz)
-    │  - Alpha       │  (8-13 Hz)
-    │  - Beta        │  (13-30 Hz)
-    └────────────────┘
-           ↓
-    RMS Power Calculation
-           ↓
-    Normalization (sum = 1.0)
+    [PROPRIETARY PRE-PROCESSING BLOCK]
+    (DC Removal + Noise Suppression + Artifact Rejection)
            ↓
     Serial Output:
-    "CH1 D:0.xxx T:0.xxx A:0.xxx B:0.xxx | CH2... | CH3... |"
+    "float, float, float"
 
                     ↓
 

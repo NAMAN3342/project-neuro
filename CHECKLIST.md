@@ -1,5 +1,7 @@
 # ✅ Setup Checklist
 
+> **Internal Use Only**: This checklist is for the development team and authorized testers using the **Project Neuro Prototype Kit**.
+
 ## Pre-Flight Checklist
 
 ### Hardware Setup

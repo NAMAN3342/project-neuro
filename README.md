@@ -97,7 +97,16 @@ We are actively working on expanding the platform with three specialized applica
 
 ## � Research & Development
 
+## 🔬 Research & Development
+
 This project is the culmination of extensive research into low-cost, high-fidelity biosignal acquisition. Our primary focus has been on overcoming the limitations of consumer-grade hardware to achieve research-quality signal processing.
+
+### **The Ideation Process**
+The concept for Project Neuro emerged from a comprehensive review of over 50 research papers on BCI accessibility. We identified a critical gap: existing solutions were either affordable but low-quality (single channel, poor contact) or research-grade but prohibitively expensive.
+
+**Key Insights from Literature:**
+*   **Movable Electrodes**: Inspired by modular EEG caps used in clinical studies, we designed a headband with adjustable mounts. This allows users to target specific brain regions (e.g., Occipital for Alpha waves, Frontal for concentration) without needing a full 10-20 system cap.
+*   **Multi-Modal Sensing**: Research indicated that combining EEG with other physiological markers significantly improves state detection accuracy. This led to the integration of a **Thermal Temperature Module** to correlate skin temperature changes with stress levels (vasoconstriction).
 
 ### **Key Research Achievements**
 
@@ -108,8 +117,11 @@ Standard Fourier Transforms (FFT) are insufficient for non-stationary EEG signal
 
 #### **2. Signal Fidelity & Noise Rejection**
 Acquiring microvolt-level EEG signals in a noisy environment without expensive shielding is a significant challenge.
-*   **Approach**: We developed a custom analog front-end combined with a robust digital filtering pipeline.
-*   **Innovation**: By implementing multi-stage IIR filters directly on the microcontroller, we achieve real-time artifact rejection before the data even reaches the visualization layer.
+*   **Approach**: We researched various cleaning methods including ICA (Independent Component Analysis) and ASR (Artifact Subspace Reconstruction).
+*   **Implementation**: Due to microcontroller constraints, we developed a custom **Multi-Stage IIR Filter Chain** that mimics the performance of offline cleaning methods in real-time. This includes:
+    *   **DC Offset Removal**: High-pass filtering to eliminate electrode drift.
+    *   **Mains Hum Rejection**: Notch filtering at 50/60Hz.
+    *   **Motion Artifact Damping**: Adaptive smoothing based on signal variance.
 
 #### **3. Latency Optimization**
 For BCI applications (especially gaming), latency is critical.

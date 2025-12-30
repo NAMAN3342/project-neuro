@@ -1,5 +1,7 @@
 # 🧠 Project Update Summary - 3-Channel EEG System
 
+> **Development Log**: This document tracks the evolution of the **Project Neuro Prototype**. Features listed here represent the current state of research and may not reflect the final commercial product specification.
+
 ## What Was Changed
 
 Your React app has been completely updated to support **3-channel simultaneous EEG monitoring** based on your Arduino code.
