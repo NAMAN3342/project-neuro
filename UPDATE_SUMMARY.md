@@ -48,7 +48,7 @@ Your React app has been completely updated to support **3-channel simultaneous E
 
 ### 📄 firmware_source.c
 Your complete embedded C code for 3-channel EEG processing:
-- Reads from A0, A1, A2
+- Reads from Input 1, Input 2, Input 3
 - DC removal per channel
 - Band-pass filters (Delta, Theta, Alpha, Beta)
 - RMS power calculation
@@ -85,7 +85,7 @@ Updated documentation with:
 ### Data Flow:
 
 ```
-Arduino (3 channels)
+Device (3 channels)
     ↓
 Serial Port @ 115200 baud
     ↓

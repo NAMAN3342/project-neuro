@@ -9,9 +9,9 @@
 │                        HARDWARE LAYER                            │
 └─────────────────────────────────────────────────────────────────┘
 
-    Electrode CH1 (O1/O2)  →  IN1 ┐
-    Electrode CH2 (Pz)     →  IN2 ├─→  Microcontroller Unit (MCU)
-    Electrode CH3 (Fp1/Fp2)→  IN3 ┘
+    Input 1  →  IN1 ┐
+    Input 2  →  IN2 ├─→  Microcontroller Unit (MCU)
+    Input 3  →  IN3 ┘
     
     Sample Rate: 256 Hz
     Baud Rate: High Speed
@@ -242,40 +242,24 @@ React Rendering:
   - Memory usage: ~50 MB
 ```
 
-## Channel Comparison Matrix
+## Channel Configuration
 
 ```
 ┌──────────┬─────────────┬─────────────┬─────────────┐
 │ Feature  │  Channel 1  │  Channel 2  │  Channel 3  │
 ├──────────┼─────────────┼─────────────┼─────────────┤
-│ Location │ Occipital   │ Parietal    │ Frontal     │
-│ Position │ O1/O2       │ Pz          │ Fp1/Fp2     │
-│ Pin      │ Input 1     │ Input 2     │ Input 3     │
-│ Best For │ Alpha       │ Theta/Alpha │ Beta        │
-│ Eyes     │ High impact │ Some impact │ Low impact  │
-│ Focus    │ Low impact  │ Some impact │ High impact │
-│ Sleep    │ High delta  │ High delta  │ High delta  │
+│ Input    │ Input 1     │ Input 2     │ Input 3     │
+│ Type     │ Primary     │ Secondary   │ Auxiliary   │
 └──────────┴─────────────┴─────────────┴─────────────┘
 ```
 
-## Typical Band Distribution by Channel
+## Band Distribution
+
+The system analyzes the frequency distribution across all channels to determine the current state.
 
 ```
-EYES OPEN (Alert):
-
-Channel 1 (Occipital):     Channel 2 (Parietal):      Channel 3 (Frontal):
-Delta: 10% ████            Delta: 10% ████             Delta: 10% ████
-Theta: 20% ████████        Theta: 25% ██████████      Theta: 15% ██████
-Alpha: 20% ████████        Alpha: 25% ██████████      Alpha: 10% ████
-Beta:  50% ████████████████Beta:  40% ████████████████Beta:  65% ██████████████████
-
-EYES CLOSED (Relaxed):
-
-Channel 1 (Occipital):     Channel 2 (Parietal):      Channel 3 (Frontal):
-Delta: 5%  ██              Delta: 10% ████             Delta: 10% ████
-Theta: 15% ██████          Theta: 20% ████████        Theta: 20% ████████
-Alpha: 60% ████████████████Alpha: 50% ████████████████Alpha: 30% ████████████
-Beta:  20% ████████        Beta:  20% ████████        Beta:  40% ████████████████
+State Detection Logic:
+[Input Data] -> [Spectral Analysis] -> [State Classifier] -> [User Feedback]
 ```
 
 ## Error Handling Flow
