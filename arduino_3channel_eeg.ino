@@ -1,3 +1,6 @@
+
+/*************************** this code is for research purpose only currently working on that *****************************************/
+
 /*************** CONFIG *****************/
 #define NUM_CH      3
 #define SAMPLE_RATE 128   // Hz
