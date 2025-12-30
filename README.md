@@ -4,11 +4,11 @@
 
 ![Project Neuro](https://img.shields.io/badge/Project-Neuro-00ff9d?style=for-the-badge)
 ![Platform](https://img.shields.io/badge/Platform-Modular_Headband-blue?style=for-the-badge)
-![Applications](https://img.shields.io/badge/Applications-3_Core_Apps-purple?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Hardware_Prototype-orange?style=for-the-badge)
 
 **A versatile, open-source hardware platform for Brain-Computer Interfacing. One headband, infinite possibilities.**
 
-[Hardware Design](#hardware-design) • [Applications](#applications) • [Setup](#installation--setup)
+[Hardware Design](#hardware-design) • [Current Features](#current-implementation) • [Future Roadmap](#future-roadmap)
 
 </div>
 
@@ -16,53 +16,90 @@
 
 ## 🌟 The Vision
 
-Project Neuro is not just a single device; it is a **modular BCI ecosystem**. We have designed a high-performance 3-channel headband capable of capturing EEG (Brain), EMG (Muscle), and EOG (Eye) signals. This core hardware powers three distinct, professional-grade applications.
+Project Neuro is not just a single device; it is a **modular BCI ecosystem**. We have designed a high-performance 3-channel headband capable of capturing EEG (Brain), EMG (Muscle), and EOG (Eye) signals.
 
-## 📱 Core Applications
+Currently, the system is in the **Hardware Prototype** phase, featuring a fully functional 3-channel EEG monitor with advanced **Stockwell Transform** signal processing for high-resolution time-frequency analysis.
 
-We have developed three specialized applications that utilize this hardware platform in unique ways. Click below to explore each one:
+---
 
-### 🎮 [Application 1: BCI Gaming Interface](./README_GAMING.md)
-**"Play with your Mind"**
-*   **Focus**: Hybrid control for FPS and PC gaming.
-*   **Tech**: Combines EEG (Focus), EMG (Jaw Triggers), and EOG (Eye Aiming).
-*   **Use Case**: Hands-free gaming, accessibility, and immersive difficulty scaling.
+## 📸 Gallery
 
-### 💙 [Application 2: Emotion & Health Monitor](./README_HEALTH.md)
-**"Know your Inner Self"**
-*   **Focus**: Mental health, stress tracking, and sleep analysis.
-*   **Tech**: EEG + Thermal Sensor fusion with Deep Learning.
-*   **Use Case**: Burnout prevention, meditation aid, and sleep disorder tracking.
+### Web Interface
+*(Placeholder for Web Interface Screenshot - To be added)*
+> The dashboard visualizing real-time brainwave activity using the Stockwell Transform.
 
-### 🗣️ [Application 3: Thought-to-Speech](./README_SPEECH.md)
-**"Speak without Sound"**
-*   **Focus**: Silent communication and accessibility.
-*   **Tech**: High-density EMG (Jaw/Larynx) + Motor Cortex EEG.
-*   **Use Case**: Silent speech interface for the mute or security applications.
+### Hardware Prototype
+*(Placeholder for Hardware Photo - To be added)*
+> The 3-channel headband prototype with electrode placement.
+
+### Demo Video
+*(Placeholder for Demo Video Link - To be added)*
+> Watch the system in action.
 
 ---
 
 ## 🛠️ Hardware Design (The Core)
 
-This repository contains the core firmware and hardware specifications that power all three applications.
+This repository contains the core firmware and hardware specifications that power the platform.
 
 ### **The Headband Architecture**
 The Project Neuro Headband is designed for modularity.
 - **3-Channel Differential Amplification**: High-gain, low-noise instrumentation amplifiers.
-- **Adjustable Electrode Mounts**: Can be repositioned for Forehead (Fp1/Fp2), Motor Cortex (C3/C4), or Occipital (O1/O2) sensing depending on the application.
-- **Expansion Port**: I2C/UART breakout for adding Thermal sensors, Gyroscopes, or Pulse Oximeters.
+- **Adjustable Electrode Mounts**: Can be repositioned for Forehead (Fp1/Fp2), Motor Cortex (C3/C4), or Occipital (O1/O2) sensing.
+- **Expansion Port**: I2C/UART breakout for adding future sensors.
 
 ### **Firmware Capabilities**
 - **Sample Rate**: 256 Hz (High Resolution)
-- **Communication**: 115200 Baud Serial / Bluetooth (Optional)
+- **Communication**: 115200 Baud Serial
 - **On-Board DSP**: Real-time filtering and artifact rejection.
+
+---
+
+## ✅ Current Implementation
+
+We have successfully built the core foundation of the platform:
+
+### **1. Advanced Signal Processing (Stockwell Transform)**
+Unlike standard FFT which loses time information, we have implemented the **Stockwell Transform (S-Transform)**. This allows us to visualize **how frequencies change over time** with excellent resolution, crucial for detecting transient brain events.
+
+### **2. 3-Channel Real-Time Monitoring**
+- Simultaneous capture of 3 independent brain regions.
+- 256Hz sampling rate for capturing detailed neural oscillations.
+- Real-time data streaming to the web dashboard.
+
+### **3. Interactive Web Dashboard**
+- **Live Spectrogram**: Visualizing the S-Transform output.
+- **3D Brain Visualization**: Mapping activity to brain regions.
+- **Band Power Analysis**: Delta, Theta, Alpha, Beta, Gamma breakdown.
+
+---
+
+## 🗺️ Future Roadmap
+
+We are actively working on expanding the platform with three specialized applications:
+
+### 🎮 [Planned: BCI Gaming Interface](./README_GAMING.md)
+**"Play with your Mind"**
+*   **Goal**: Hybrid control for FPS and PC gaming.
+*   **Tech**: Combining EEG (Focus) with future EMG (Jaw Triggers) and EOG (Eye Aiming) modules.
+
+### 💙 [Planned: Emotion & Health Monitor](./README_HEALTH.md)
+**"Know your Inner Self"**
+*   **Goal**: Mental health, stress tracking, and sleep analysis.
+*   **Tech**: Fusion of EEG with planned Thermal Sensors and Deep Learning models.
+
+### 🗣️ [Planned: Thought-to-Speech](./README_SPEECH.md)
+**"Speak without Sound"**
+*   **Goal**: Silent communication and accessibility.
+*   **Tech**: High-density EMG (Jaw/Larynx) + Motor Cortex EEG for subvocal recognition.
 
 ---
 
 ## 📋 Table of Contents
 
 - [Hardware Design](#hardware-design)
-- [Applications](#applications)
+- [Current Implementation](#current-implementation)
+- [Future Roadmap](#future-roadmap)
 - [Installation & Setup](#installation--setup)
 - [Usage](#usage)
 - [Technical Implementation](#technical-implementation)
