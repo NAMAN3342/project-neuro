@@ -1,0 +1,60 @@
+.channel-selector {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.channel-btn {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.channel-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.channel-btn.active {
+  background: rgba(0, 255, 157, 0.1);
+  border-color: #00ff9d;
+}
+
+.channel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.channel-num {
+  color: #fff;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.channel-label {
+  color: #666;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.channel-btn.active .channel-label {
+  color: #00ff9d;
+}
+
+.signal-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #333;
+}
+
+.signal-dot.active {
+  background: #00ff9d;
+  box-shadow: 0 0 5px #00ff9d;
+}

@@ -1,38 +1,71 @@
-# 🧠 Advanced 3-Channel EEG Neural Activity Monitor
+# 🧠 Project Neuro: Modular BCI Headband Platform
 
 <div align="center">
 
-![EEG Banner](https://img.shields.io/badge/EEG-Neural_Monitoring-00ff9d?style=for-the-badge)
-![Channels](https://img.shields.io/badge/Channels-3-blue?style=for-the-badge)
-![Sample Rate](https://img.shields.io/badge/Sample_Rate-128Hz-purple?style=for-the-badge)
-![Real Time](https://img.shields.io/badge/Real--Time-Processing-orange?style=for-the-badge)
+![Project Neuro](https://img.shields.io/badge/Project-Neuro-00ff9d?style=for-the-badge)
+![Platform](https://img.shields.io/badge/Platform-Modular_Headband-blue?style=for-the-badge)
+![Applications](https://img.shields.io/badge/Applications-3_Core_Apps-purple?style=for-the-badge)
 
-**A sophisticated real-time electroencephalography (EEG) monitoring system that processes neural oscillations from three independent brain regions simultaneously, providing spectral analysis of Delta, Theta, Alpha, and Beta brainwave bands through an intuitive web interface.**
+**A versatile, open-source hardware platform for Brain-Computer Interfacing. One headband, infinite possibilities.**
 
-[Features](#features) • [Architecture](#system-architecture) • [Setup](#installation--setup) • [Usage](#usage) • [Science](#the-science-behind-eeg) • [Troubleshooting](#troubleshooting)
+[Hardware Design](#hardware-design) • [Applications](#applications) • [Setup](#installation--setup)
 
 </div>
 
 ---
 
+## 🌟 The Vision
+
+Project Neuro is not just a single device; it is a **modular BCI ecosystem**. We have designed a high-performance 3-channel headband capable of capturing EEG (Brain), EMG (Muscle), and EOG (Eye) signals. This core hardware powers three distinct, professional-grade applications.
+
+## 📱 Core Applications
+
+We have developed three specialized applications that utilize this hardware platform in unique ways. Click below to explore each one:
+
+### 🎮 [Application 1: BCI Gaming Interface](./README_GAMING.md)
+**"Play with your Mind"**
+*   **Focus**: Hybrid control for FPS and PC gaming.
+*   **Tech**: Combines EEG (Focus), EMG (Jaw Triggers), and EOG (Eye Aiming).
+*   **Use Case**: Hands-free gaming, accessibility, and immersive difficulty scaling.
+
+### 💙 [Application 2: Emotion & Health Monitor](./README_HEALTH.md)
+**"Know your Inner Self"**
+*   **Focus**: Mental health, stress tracking, and sleep analysis.
+*   **Tech**: EEG + Thermal Sensor fusion with Deep Learning.
+*   **Use Case**: Burnout prevention, meditation aid, and sleep disorder tracking.
+
+### 🗣️ [Application 3: Thought-to-Speech](./README_SPEECH.md)
+**"Speak without Sound"**
+*   **Focus**: Silent communication and accessibility.
+*   **Tech**: High-density EMG (Jaw/Larynx) + Motor Cortex EEG.
+*   **Use Case**: Silent speech interface for the mute or security applications.
+
+---
+
+## 🛠️ Hardware Design (The Core)
+
+This repository contains the core firmware and hardware specifications that power all three applications.
+
+### **The Headband Architecture**
+The Project Neuro Headband is designed for modularity.
+- **3-Channel Differential Amplification**: High-gain, low-noise instrumentation amplifiers.
+- **Adjustable Electrode Mounts**: Can be repositioned for Forehead (Fp1/Fp2), Motor Cortex (C3/C4), or Occipital (O1/O2) sensing depending on the application.
+- **Expansion Port**: I2C/UART breakout for adding Thermal sensors, Gyroscopes, or Pulse Oximeters.
+
+### **Firmware Capabilities**
+- **Sample Rate**: 256 Hz (High Resolution)
+- **Communication**: 115200 Baud Serial / Bluetooth (Optional)
+- **On-Board DSP**: Real-time filtering and artifact rejection.
+
+---
+
 ## 📋 Table of Contents
 
-- [What Is This Project?](#what-is-this-project)
-- [What We're Doing](#what-were-doing)
-- [What We've Built](#what-weve-built)
-- [Features](#features)
-- [System Architecture](#system-architecture)
-- [Hardware Requirements](#hardware-requirements)
-- [Software Stack](#software-stack)
+- [Hardware Design](#hardware-design)
+- [Applications](#applications)
 - [Installation & Setup](#installation--setup)
 - [Usage](#usage)
-- [The Science Behind EEG](#the-science-behind-eeg)
 - [Technical Implementation](#technical-implementation)
-- [Channel Configuration](#channel-configuration)
-- [Data Format](#data-format)
-- [Performance Metrics](#performance-metrics)
-- [Troubleshooting](#troubleshooting)
-- [Future Enhancements](#future-enhancements)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -76,7 +109,7 @@ We're building a **three-channel neural activity monitoring system** that can si
 
 ### **Hardware Layer**
 ✅ **Arduino Firmware** (`arduino_3channel_eeg.ino`)
-- 3-channel simultaneous ADC sampling at 128 Hz
+- 3-channel simultaneous ADC sampling at 256 Hz
 - Real-time digital signal processing (DSP)
 - DC removal filters to eliminate electrode drift
 - IIR band-pass filters for frequency separation
@@ -1080,3 +1113,112 @@ Perfect for:
 **Version**: 1.0.0  
 **Last Updated**: December 28, 2025  
 **Status**: ✅ Production Ready
+
+## Installation
+
+1. Install dependencies:
+```bash
+npm install
+```
+
+2. Start the development server:
+```bash
+npm start
+```
+
+3. Open your browser to `http://localhost:3000`
+
+## Usage
+
+1. Upload the Arduino code (`arduino_3channel_eeg.ino`) to your board
+2. Connect your EEG sensors to pins **A0, A1, and A2**
+3. Place electrodes on your head according to recommended positions
+4. Open the web app in a supported browser
+5. Click "Connect to Arduino"
+6. Select your Arduino's COM port from the dialog
+7. Use the channel selector buttons to switch between channels
+8. Watch real-time 3-channel brainwave analysis!
+
+## Channel Switching
+
+The app allows you to view one channel at a time in detail, but shows status for all 3 channels:
+
+- Click **Channel 1**, **Channel 2**, or **Channel 3** buttons to switch views
+- Mini-status bar shows dominant wave for all channels simultaneously
+- Each channel independently detects dominant wave and alpha peaks
+
+## EEG Band Powers
+
+- **Delta (0.5-4 Hz)**: Deep sleep, unconscious states 🌙
+- **Theta (4-8 Hz)**: Drowsiness, meditation, creativity 🧘
+- **Alpha (8-13 Hz)**: Relaxed, calm, eyes closed 😌
+- **Beta (13-30 Hz)**: Active thinking, focus, anxiety 🧠
+
+## Understanding Alpha Detection
+
+The app automatically detects when alpha waves are dominant (typically when eyes are closed):
+
+- **For occipital placement (O1/O2)**: You should see strong alpha when closing your eyes
+- **For frontal placement (Fp1/Fp2)**: Alpha will be weaker, beta typically dominates
+- **Eyes closed indicator** (👁️) appears when alpha > 25% or is dominant wave
+
+## Arduino Code Explanation
+
+The Arduino code implements:
+
+- **DC removal filter**: Removes DC offset from each channel
+- **Band-pass filters**: Separates Delta, Theta, Alpha, Beta frequencies
+- **RMS calculation**: Computes power in each band
+- **Normalization**: Converts to percentages that sum to 100%
+- **Multi-channel processing**: Handles 3 channels simultaneously at 128 Hz
+
+## Browser Compatibility
+
+This app requires the Web Serial API, which is supported in:
+- Chrome 89+
+- Edge 89+
+- Opera 75+
+
+⚠️ **Note**: The Web Serial API only works on HTTPS sites or localhost for security reasons.
+
+## Building for Production
+
+```bash
+npm run build
+```
+
+The optimized production build will be in the `build/` folder.
+
+## Troubleshooting
+
+**Connection Issues:**
+- Make sure your Arduino is not connected to the Arduino IDE Serial Monitor
+- Try a different USB port
+- Check that you selected the correct COM port
+- Verify the Arduino code is uploaded correctly and shows "3-Channel EEG RMS Band Power Started"
+
+**No Data Displayed:**
+- Check that all 3 EEG sensors are properly connected to A0, A1, A2
+- Verify the baud rate is set to 115200
+- Open the browser console (F12) to check for errors
+- Ensure electrodes have good contact with skin (use conductive gel if needed)
+
+**Beta Always Dominant:**
+- This is normal for frontal electrodes (Fp1/Fp2)
+- Move electrodes to occipital region (back of head) to see more alpha activity
+- Make sure you're relaxed and in a quiet environment
+
+**No Alpha When Closing Eyes:**
+- Frontal electrodes show weak alpha - use occipital placement (O1/O2)
+- Ensure electrodes have good skin contact
+- Try closing eyes for 10-15 seconds and relaxing completely
+- Avoid muscle tension (especially in forehead and jaw)
+
+**Channel Not Updating:**
+- Check physical connection of that channel's sensor
+- Verify analog pin is correctly connected (A0, A1, or A2)
+- Try restarting Arduino and reconnecting
+
+## License
+
+MIT

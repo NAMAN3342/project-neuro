@@ -1,0 +1,40 @@
+.power-mode-selector {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.mode-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border: none;
+  background: transparent;
+  border-radius: 16px;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mode-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.mode-btn.active {
+  background: #00ff9d;
+  color: #000;
+  font-weight: 600;
+}
+
+.mode-icon {
+  font-size: 14px;
+}
+
+.mode-label {
+  font-size: 12px;
+  white-space: nowrap;
+}

@@ -1,0 +1,265 @@
+.main-dashboard {
+  width: 100vw;
+  height: 100vh;
+  background: #000000;
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+/* Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.logo-project {
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #666;
+}
+
+.logo-neuro {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: #00ff9d;
+  text-shadow: 0 0 20px rgba(0, 255, 157, 0.5);
+}
+
+.header-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.connect-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.connect-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #00ff9d;
+}
+
+.connect-btn.connected {
+  border-color: #00ff9d;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff4444;
+}
+
+.connect-btn.connected .status-dot {
+  background: #00ff9d;
+  box-shadow: 0 0 10px #00ff9d;
+}
+
+/* Main Content */
+.dashboard-content {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  gap: 20px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+/* Panels */
+.panel {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.panel-header h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.panel-badge {
+  padding: 4px 10px;
+  background: rgba(0, 255, 157, 0.1);
+  border: 1px solid rgba(0, 255, 157, 0.3);
+  border-radius: 4px;
+  font-size: 10px;
+  color: #00ff9d;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Brain Panel */
+.brain-panel {
+  min-height: 400px;
+}
+
+/* Spectrum Panel */
+.spectrum-panel {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* Dominant Card */
+.dominant-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left-width: 3px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.dominant-emoji {
+  font-size: 32px;
+}
+
+.dominant-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dominant-label {
+  font-size: 11px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dominant-name {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.dominant-value {
+  font-size: 28px;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+}
+
+/* Waveform Panel */
+.waveform-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Band Powers */
+.band-powers {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.band-power-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.band-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.band-name {
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.band-value {
+  color: #999;
+  font-family: 'Courier New', monospace;
+}
+
+.bar-track {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* Footer */
+.dashboard-footer {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 15px 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.status-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.status-label {
+  font-size: 11px;
+  color: #444;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.status-value {
+  font-size: 12px;
+  color: #00ff9d;
+  font-family: 'Courier New', monospace;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .dashboard-content {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+}
