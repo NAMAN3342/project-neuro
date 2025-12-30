@@ -614,12 +614,7 @@ The system supports up to 3 simultaneous input channels.
 - ✅ Suitable for state detection
 - ✅ Low-cost implementation
 
-**Limitations:**
-- ⚠️ Not medical-grade (research/education only)
-- ⚠️ Limited frequency resolution
-- ⚠️ Susceptible to muscle artifacts
-- ⚠️ No absolute power values (only relative)
-- ⚠️ Simple filters (not research-grade DSP)
+
 
 **Noise Sources:**
 - Muscle artifacts (EMG): 20-200 Hz
