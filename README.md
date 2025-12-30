@@ -25,8 +25,10 @@ Currently, the system is in the **Hardware Prototype** phase, featuring a fully 
 ## 📸 Gallery
 
 ### Web Interface
-*(Placeholder for Web Interface Screenshot - To be added)*
+<img width="1076" height="686" alt="image" src="https://github.com/user-attachments/assets/2af51428-17aa-48e6-a176-109242021b92" />
+
 > The dashboard visualizing real-time brainwave activity using the Stockwell Transform.
+<img width="1901" height="918" alt="image" src="https://github.com/user-attachments/assets/aafe0bf3-f8f4-45ed-94da-1b5e49675109" />
 
 ### Hardware Prototype
 *(Placeholder for Hardware Photo - To be added)*
