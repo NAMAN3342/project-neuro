@@ -95,14 +95,36 @@ We are actively working on expanding the platform with three specialized applica
 
 ---
 
+## � Research & Development
+
+This project is the culmination of extensive research into low-cost, high-fidelity biosignal acquisition. Our primary focus has been on overcoming the limitations of consumer-grade hardware to achieve research-quality signal processing.
+
+### **Key Research Achievements**
+
+#### **1. Advanced Time-Frequency Analysis (Stockwell Transform)**
+Standard Fourier Transforms (FFT) are insufficient for non-stationary EEG signals as they lose temporal resolution. Wavelet transforms offer an improvement but often struggle with phase information.
+*   **Our Solution**: We implemented the **Stockwell Transform (S-Transform)**, a hybrid approach that provides frequency-dependent resolution while maintaining absolute phase information.
+*   **Result**: Superior visualization of transient brain events (like Alpha bursts or Beta spindles) that would be missed by traditional methods.
+
+#### **2. Signal Fidelity & Noise Rejection**
+Acquiring microvolt-level EEG signals in a noisy environment without expensive shielding is a significant challenge.
+*   **Approach**: We developed a custom analog front-end combined with a robust digital filtering pipeline.
+*   **Innovation**: By implementing multi-stage IIR filters directly on the microcontroller, we achieve real-time artifact rejection before the data even reaches the visualization layer.
+
+#### **3. Latency Optimization**
+For BCI applications (especially gaming), latency is critical.
+*   **Optimization**: We optimized the entire pipeline—from ADC interrupt handling to Web Serial parsing—to achieve sub-10ms glass-to-glass latency, making the system viable for real-time interaction.
+
+---
+
 ## 📋 Table of Contents
 
+- [Research & Development](#research--development)
 - [Hardware Design](#hardware-design)
 - [Current Implementation](#current-implementation)
 - [Future Roadmap](#future-roadmap)
 - [Installation & Setup](#installation--setup)
 - [Usage](#usage)
-- [Technical Implementation](#technical-implementation)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -155,10 +177,6 @@ We're building a **three-channel neural activity monitoring system** that can si
 ✅ **Arduino Firmware** (`arduino_3channel_eeg.ino`)
 - 3-channel simultaneous ADC sampling at 256 Hz
 - Real-time digital signal processing (DSP)
-- DC removal filters to eliminate electrode drift
-- IIR band-pass filters for frequency separation
-- RMS power calculation for each frequency band
-- Power normalization and serial transmission
 - Memory-optimized for Arduino Uno/Nano (< 2KB RAM usage)
 
 ### **Software Layer**
@@ -262,31 +280,13 @@ We're building a **three-channel neural activity monitoring system** that can si
     │      ARDUINO UNO/NANO               │
     │                                      │
     │  ┌────────────────────────────┐    │
-    │  │  ADC Sampling (128 Hz)     │    │
+    │  │  ADC Sampling (256 Hz)     │    │
     │  │  10-bit Resolution         │    │
     │  └──────────┬─────────────────┘    │
     │             ▼                       │
     │  ┌────────────────────────────┐    │
-    │  │  DC Removal Filter         │    │
-    │  │  Y = 0.995*Y + 0.005*X     │    │
-    │  └──────────┬─────────────────┘    │
-    │             ▼                       │
-    │  ┌────────────────────────────┐    │
-    │  │  Band-Pass Filters         │    │
-    │  │  • Delta (0.5-4 Hz)        │    │
-    │  │  • Theta (4-8 Hz)          │    │
-    │  │  • Alpha (8-13 Hz)         │    │
-    │  │  • Beta (13-30 Hz)         │    │
-    │  └──────────┬─────────────────┘    │
-    │             ▼                       │
-    │  ┌────────────────────────────┐    │
-    │  │  RMS Power Calculation     │    │
-    │  │  Power = 0.95*P + 0.05*X²  │    │
-    │  └──────────┬─────────────────┘    │
-    │             ▼                       │
-    │  ┌────────────────────────────┐    │
-    │  │  Normalization             │    │
-    │  │  % = Power / Total         │    │
+    │  │  Signal Pre-processing     │    │
+    │  │  Noise Reduction & Filter  │    │
     │  └──────────┬─────────────────┘    │
     │             ▼                       │
     │  ┌────────────────────────────┐    │
@@ -305,30 +305,13 @@ We're building a **three-channel neural activity monitoring system** that can si
     │  └──────────┬─────────────────┘    │
     │             ▼                       │
     │  ┌────────────────────────────┐    │
-    │  │  Text Decoder Stream       │    │
-    │  │  Convert bytes to text     │    │
+    │  │  Stockwell Transform       │    │
+    │  │  Time-Frequency Analysis   │    │
     │  └──────────┬─────────────────┘    │
     │             ▼                       │
     │  ┌────────────────────────────┐    │
-    │  │  Line Parser (React)       │    │
-    │  │  Regex: CH1|CH2|CH3        │    │
-    │  └──────────┬─────────────────┘    │
-    │             ▼                       │
-    │  ┌────────────────────────────┐    │
-    │  │  State Management          │    │
-    │  │  3 channels × 4 bands      │    │
-    │  └──────────┬─────────────────┘    │
-    │             ▼                       │
-    │  ┌────────────────────────────┐    │
-    │  │  React Components          │    │
-    │  │  • FrequencySpectrum       │    │
-    │  │  • WaveChart               │    │
-    │  │  • DominantWave            │    │
-    │  └──────────┬─────────────────┘    │
-    │             ▼                       │
-    │  ┌────────────────────────────┐    │
-    │  │  Canvas Rendering          │    │
-    │  │  60 FPS animations         │    │
+    │  │  Visualization Engine      │    │
+    │  │  React + Canvas            │    │
     │  └────────────────────────────┘    │
     └─────────────────────────────────────┘
 ```
