@@ -44,13 +44,13 @@ This repository contains the core firmware and hardware specifications that powe
 
 ### **The Headband Architecture**
 The Project Neuro Headband is designed for modularity.
-- **3-Channel Differential Amplification**: High-gain, low-noise instrumentation amplifiers.
+- **3-Channel Differential Amplification**: Custom high-gain, low-noise instrumentation amplifier configuration.
 - **Adjustable Electrode Mounts**: Can be repositioned for Forehead (Fp1/Fp2), Motor Cortex (C3/C4), or Occipital (O1/O2) sensing.
-- **Expansion Port**: I2C/UART breakout for adding future sensors.
+- **Expansion Port**: Breakout for adding future sensors.
 
 ### **Firmware Capabilities**
-- **Sample Rate**: 256 Hz (High Resolution)
-- **Communication**: 115200 Baud Serial
+- **Sample Rate**: High Resolution (256 Hz)
+- **Communication**: High-speed Serial
 - **On-Board DSP**: Real-time filtering and artifact rejection.
 
 ---
@@ -145,7 +145,7 @@ For BCI applications (especially gaming), latency is critical.
 <details>
 <summary><a id="what-is-this-project"></a><strong>🎯 What Is This Project?</strong></summary>
 
-This is a **complete brain-computer interface (BCI) system** that captures electrical activity from your brain using EEG electrodes, processes the signals in real-time on an Arduino microcontroller, and visualizes the results through a beautiful web application. It's designed for:
+This is a **complete brain-computer interface (BCI) system** that captures electrical activity from your brain using EEG electrodes, processes the signals in real-time on an embedded microcontroller, and visualizes the results through a beautiful web application. It's designed for:
 
 - 🔬 **Neuroscience Research**: Study brain states and neural correlates
 - 🧘 **Meditation Monitoring**: Track relaxation and meditative states
@@ -186,10 +186,10 @@ We're building a **three-channel neural activity monitoring system** that can si
 <summary><a id="what-weve-built"></a><strong>✅ What We've Built</strong></summary>
 
 ### **Hardware Layer**
-✅ **Arduino Firmware** (`arduino_3channel_eeg.ino`)
+✅ **Embedded Firmware**
 - 3-channel simultaneous ADC sampling at 256 Hz
 - Real-time digital signal processing (DSP)
-- Memory-optimized for Arduino Uno/Nano (< 2KB RAM usage)
+- Memory-optimized for low-power microcontrollers
 
 ### **Software Layer**
 ✅ **React Web Application**
@@ -236,7 +236,7 @@ We're building a **three-channel neural activity monitoring system** that can si
 <summary><a id="features"></a><strong>⚡ Features</strong></summary>
 
 ### **Core Capabilities**
-- 🔌 **Direct Hardware Communication**: Web Serial API for seamless Arduino connection
+- 🔌 **Direct Hardware Communication**: Web Serial API for seamless device connection
 - 🎯 **3-Channel Simultaneous Monitoring**: Capture data from three brain regions at once
 - 📊 **Real-Time Spectral Analysis**: Live frequency decomposition with millisecond latency
 - 📈 **Historical Tracking**: 100-sample rolling history per channel (7.8 seconds)
@@ -245,7 +245,7 @@ We're building a **three-channel neural activity monitoring system** that can si
 - ⚡ **High Performance**: 128 Hz sampling rate, sub-10ms latency
 - 👁️ **Smart Detection**: Automatic eyes-closed and mental state detection
 - 🧘 **State Recognition**: Identify sleep, meditation, focus, and relaxation
-- 💾 **Memory Efficient**: Runs on Arduino Uno with only 2KB RAM
+- 💾 **Memory Efficient**: Runs on low-power MCUs with limited RAM
 - 🌐 **Cross-Platform**: Works on Windows, Mac, Linux (Chrome/Edge/Opera)
 - 📱 **Responsive Design**: Desktop, tablet, and mobile support
 
@@ -289,7 +289,7 @@ We're building a **three-channel neural activity monitoring system** that can si
                    │ A0, A1, A2 (0-5V)
                    ▼
     ┌─────────────────────────────────────┐
-    │      ARDUINO UNO/NANO               │
+    │         MICROCONTROLLER             │
     │                                      │
     │  ┌────────────────────────────┐    │
     │  │  ADC Sampling (256 Hz)     │    │
@@ -336,10 +336,7 @@ We're building a **three-channel neural activity monitoring system** that can si
 <summary><a id="hardware-requirements"></a><strong>🔧 Hardware Requirements</strong></summary>
 
 ### **Essential Components**
-- **Arduino Board** (any of the following):
-  - Arduino Uno (recommended for beginners)
-  - Arduino Nano (compact option)
-  - Arduino Mega (if adding more channels)
+- **Microcontroller Board** (compatible with 3-channel ADC input)
   - Compatible clones (CH340 chip supported)
   
 - **EEG Sensors/Amplifiers** (3 units):
@@ -383,10 +380,10 @@ Power Supply           | 5V         | ±5V dual
 <summary><a id="software-stack"></a><strong>💻 Software Stack</strong></summary>
 
 ### **Embedded Software**
-- **Arduino IDE** 1.8.0+ or 2.0+
-- **Language**: C/C++ (Arduino framework)
-- **Compiler**: AVR-GCC
-- **Libraries**: None required (pure Arduino)
+- **Firmware Flashing Tool**
+- **Language**: Embedded C/C++
+- **Compiler**: GCC
+- **Libraries**: Standard Embedded Libs
 
 ### **Web Application**
 - **Framework**: React 18.2.0
@@ -431,23 +428,23 @@ npm run dev
 
 ### **Detailed Setup**
 
-#### **Step 1: Arduino Setup**
+#### **Step 1: Hardware Setup**
 
-1. **Install Arduino IDE**
-   - Download from [arduino.cc](https://www.arduino.cc/en/software)
+1. **Install Flashing Tool**
+   - Download appropriate tool for your MCU
    - Install with default settings
 
-2. **Connect Arduino**
-   - Plug Arduino into USB port
+2. **Connect Device**
+   - Plug device into USB port
    - Wait for drivers to install (Windows)
 
 3. **Upload Firmware**
    ```
-   - Open Arduino IDE
-   - File → Open → arduino_3channel_eeg.ino
-   - Tools → Board → Select your Arduino model
-   - Tools → Port → Select COM port (e.g., COM3)
-   - Click Upload button (→)
+   - Open Flashing Tool
+   - Load firmware_source.c
+   - Select your MCU model
+   - Select COM port (e.g., COM3)
+   - Click Upload/Flash button
    - Wait for "Done uploading"
    ```
 
@@ -462,10 +459,10 @@ npm run dev
 #### **Step 2: Hardware Wiring**
 
 ```
-EEG Amplifier 1  →  Arduino Pin A0  (Channel 1)
-EEG Amplifier 2  →  Arduino Pin A1  (Channel 2)
-EEG Amplifier 3  →  Arduino Pin A2  (Channel 3)
-All Grounds      →  Arduino GND
+EEG Amplifier 1  →  Analog Input 1  (Channel 1)
+EEG Amplifier 2  →  Analog Input 2  (Channel 2)
+EEG Amplifier 3  →  Analog Input 3  (Channel 3)
+All Grounds      →  Device GND
 ```
 
 #### **Step 3: Electrode Placement**
@@ -522,7 +519,7 @@ npm run build
 ### **Basic Operation**
 
 1. **Power On**
-   - Connect Arduino to computer
+   - Connect Device to computer
    - Electrodes should be placed on head
    - Apply conductive gel
 
@@ -534,7 +531,7 @@ npm run build
    - Or navigate to http://localhost:3000
 
 3. **Connect**
-   - Click "Connect to Arduino" button
+   - Click "Connect to Device" button
    - Select COM port from popup
    - Click "Connect"
    - Status shows "● Connected"
@@ -766,7 +763,7 @@ float normalized = rmsDelta / total;
 - Low computational cost (1-2 operations per sample)
 - Low memory footprint (1-2 state variables)
 - Real-time friendly (no delay buffer needed)
-- Works on Arduino Uno (limited resources)
+- Works on low-power MCUs (limited resources)
 
 **Trade-offs:**
 - ✅ Fast execution (< 1 ms total processing)
@@ -776,7 +773,7 @@ float normalized = rmsDelta / total;
 
 ### **Timing & Performance**
 
-**Arduino Processing Time:**
+**MCU Processing Time:**
 ```
 Analog Read (3 channels):     300 μs
 DC Removal (3 channels):       50 μs
@@ -911,7 +908,7 @@ CH3 (Frontal):      D:5%   T:10%  A:10%  B:75%  ← Beta peak!
 | **Frequency Range** | 0.5-30 Hz | Covers Delta to Beta |
 | **Latency** | < 50 ms | From electrode to display |
 | **History Buffer** | 100 samples | 7.8 seconds per channel |
-| **Memory Usage** | < 2 KB | Arduino SRAM |
+| **Memory Usage** | < 2 KB | MCU SRAM |
 | **Serial Bandwidth** | 12.8 KB/s | 115200 baud |
 | **Browser FPS** | 60 Hz | Canvas refresh rate |
 
@@ -946,20 +943,20 @@ CH3 (Frontal):      D:5%   T:10%  A:10%  B:75%  ← Beta peak!
 
 ### **Connection Issues**
 
-**Problem: Can't connect to Arduino**
+**Problem: Can't connect to Device**
 ```
-✓ Check: Arduino Serial Monitor is closed
+✓ Check: Serial Monitor is closed
 ✓ Check: Correct COM port selected
 ✓ Check: USB cable is data-capable (not charge-only)
-✓ Check: Arduino is powered on (LED lit)
+✓ Check: Device is powered on (LED lit)
 ✓ Try: Different USB port
-✓ Try: Restart Arduino (unplug/replug)
+✓ Try: Restart Device (unplug/replug)
 ✓ Try: Refresh browser page
 ```
 
 **Problem: "Port already in use"**
 ```
-→ Close Arduino IDE Serial Monitor
+→ Close Serial Monitor
 → Close any other serial terminal programs
 → Disconnect and reconnect USB cable
 ```
@@ -968,7 +965,7 @@ CH3 (Frontal):      D:5%   T:10%  A:10%  B:75%  ← Beta peak!
 
 **Problem: No data displayed**
 ```
-1. Open Arduino Serial Monitor
+1. Open Serial Monitor
 2. Verify output format matches:
    CH1 D:0.xxx T:0.xxx A:0.xxx B:0.xxx | CH2... | CH3... |
 3. Check baud rate is 115200
@@ -977,7 +974,7 @@ CH3 (Frontal):      D:5%   T:10%  A:10%  B:75%  ← Beta peak!
 
 **Problem: One channel not updating**
 ```
-✓ Check: Physical connection to Arduino pin (A0/A1/A2)
+✓ Check: Physical connection to input (Input 1/2/3)
 ✓ Check: EEG amplifier is powered
 ✓ Check: Electrode is attached to skin
 ✓ Try: Swap to different channel to test hardware
@@ -1176,7 +1173,7 @@ MIT License - Feel free to use, modify, and distribute.
 This project teaches:
 - **Neuroscience**: Brain waves and mental states
 - **Signal Processing**: Filters, FFT, power spectrum
-- **Embedded Systems**: Arduino programming, real-time constraints
+- **Embedded Systems**: Firmware programming, real-time constraints
 - **Web Development**: React, Web Serial API, canvas rendering
 - **Data Visualization**: Real-time charting, UI design
 - **Hardware Interface**: ADC, sensors, serial communication
@@ -1210,12 +1207,12 @@ npm start
 
 ## Usage
 
-1. Upload the Arduino code (`arduino_3channel_eeg.ino`) to your board
-2. Connect your EEG sensors to pins **A0, A1, and A2**
+1. Upload the firmware (`firmware_source.c`) to your board
+2. Connect your EEG sensors to inputs **1, 2, and 3**
 3. Place electrodes on your head according to recommended positions
 4. Open the web app in a supported browser
-5. Click "Connect to Arduino"
-6. Select your Arduino's COM port from the dialog
+5. Click "Connect to Device"
+6. Select your Device's COM port from the dialog
 7. Use the channel selector buttons to switch between channels
 8. Watch real-time 3-channel brainwave analysis!
 
@@ -1242,9 +1239,9 @@ The app automatically detects when alpha waves are dominant (typically when eyes
 - **For frontal placement (Fp1/Fp2)**: Alpha will be weaker, beta typically dominates
 - **Eyes closed indicator** (👁️) appears when alpha > 25% or is dominant wave
 
-## Arduino Code Explanation
+## Firmware Explanation
 
-The Arduino code implements:
+The firmware implements:
 
 - **DC removal filter**: Removes DC offset from each channel
 - **Band-pass filters**: Separates Delta, Theta, Alpha, Beta frequencies
@@ -1272,13 +1269,13 @@ The optimized production build will be in the `build/` folder.
 ## Troubleshooting
 
 **Connection Issues:**
-- Make sure your Arduino is not connected to the Arduino IDE Serial Monitor
+- Make sure your Device is not connected to another Serial Monitor
 - Try a different USB port
 - Check that you selected the correct COM port
-- Verify the Arduino code is uploaded correctly and shows "3-Channel EEG RMS Band Power Started"
+- Verify the firmware is uploaded correctly and shows "3-Channel EEG RMS Band Power Started"
 
 **No Data Displayed:**
-- Check that all 3 EEG sensors are properly connected to A0, A1, A2
+- Check that all 3 EEG sensors are properly connected to Input 1, 2, 3
 - Verify the baud rate is set to 115200
 - Open the browser console (F12) to check for errors
 - Ensure electrodes have good contact with skin (use conductive gel if needed)
@@ -1296,8 +1293,8 @@ The optimized production build will be in the `build/` folder.
 
 **Channel Not Updating:**
 - Check physical connection of that channel's sensor
-- Verify analog pin is correctly connected (A0, A1, or A2)
-- Try restarting Arduino and reconnecting
+- Verify analog input is correctly connected
+- Try restarting Device and reconnecting
 
 ## License
 

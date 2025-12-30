@@ -5,7 +5,7 @@
 ## Pre-Flight Checklist
 
 ### Hardware Setup
-- [ ] Arduino board ready (Uno/Nano/Mega)
+- [ ] Microcontroller board ready
 - [ ] 3x EEG sensors/amplifiers connected
 - [ ] Electrodes prepared with conductive gel
 - [ ] USB cable connected
@@ -14,19 +14,19 @@
 ### Software Setup
 - [ ] Node.js installed (v14+)
 - [ ] Chrome/Edge/Opera browser installed
-- [ ] Arduino IDE installed
+- [ ] Firmware Flashing Tool installed
 - [ ] `npm install` completed successfully
 - [ ] No errors in terminal
 
-## Arduino Upload Checklist
+## Firmware Upload Checklist
 
-- [ ] Open `arduino_3channel_eeg.ino` in Arduino IDE
-- [ ] Select correct board (Tools → Board)
-- [ ] Select correct COM port (Tools → Port)
+- [ ] Open firmware source code
+- [ ] Select correct board target
+- [ ] Select correct COM port
 - [ ] Click Upload button
 - [ ] Wait for "Done uploading" message
-- [ ] Open Serial Monitor (Ctrl+Shift+M)
-- [ ] Set baud rate to 115200
+- [ ] Open Serial Monitor
+- [ ] Set baud rate to correct speed
 - [ ] Verify output shows: "3-Channel EEG RMS Band Power Started"
 - [ ] Verify format: `CH1 D:0.xxx T:0.xxx A:0.xxx B:0.xxx | CH2... | CH3... |`
 - [ ] Close Serial Monitor before connecting web app

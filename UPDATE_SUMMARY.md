@@ -4,12 +4,12 @@
 
 ## What Was Changed
 
-Your React app has been completely updated to support **3-channel simultaneous EEG monitoring** based on your Arduino code.
+Your React app has been completely updated to support **3-channel simultaneous EEG monitoring** based on your embedded firmware.
 
 ## New Features
 
 ### ✅ Multi-Channel Support
-- **3 simultaneous channels** (A0, A1, A2)
+- **3 simultaneous channels** (Input 1, Input 2, Input 3)
 - Independent processing for each channel
 - Channel switching interface in the UI
 - All-channel status overview
@@ -46,8 +46,8 @@ Your React app has been completely updated to support **3-channel simultaneous E
 
 ## New Files Created
 
-### 📄 arduino_3channel_eeg.ino
-Your complete Arduino code for 3-channel EEG processing:
+### 📄 firmware_source.c
+Your complete embedded C code for 3-channel EEG processing:
 - Reads from A0, A1, A2
 - DC removal per channel
 - Band-pass filters (Delta, Theta, Alpha, Beta)

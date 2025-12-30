@@ -104,7 +104,7 @@ If you see constant high readings or rhythmic patterns:
 3. Improve electrode contact (use gel)
 4. Ground yourself properly
 5. Move away from AC power sources
-6. Battery power the Arduino if possible
+6. Battery power the device if possible
 
 ## Signal Quality Checklist
 

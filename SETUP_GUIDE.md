@@ -5,7 +5,7 @@
 ## Step 1: Hardware Setup
 
 ### Materials Needed:
-- Arduino board (Uno/Nano/Mega)
+- Microcontroller Development Board
 - 3x EEG sensors/amplifiers (Custom or Compatible Modules)
 - 6x EEG electrodes (3 active + 3 reference)
 - Conductive gel
@@ -13,11 +13,11 @@
 
 ### Connections:
 ```
-Arduino Pin  →  EEG Sensor
+MCU Pin      →  EEG Sensor
 ─────────────────────────────
-A0           →  Channel 1 (Occipital - O1/O2)
-A1           →  Channel 2 (Parietal - Pz)
-A2           →  Channel 3 (Frontal - Fp1/Fp2)
+Input 1      →  Channel 1 (Occipital - O1/O2)
+Input 2      →  Channel 2 (Parietal - Pz)
+Input 3      →  Channel 3 (Frontal - Fp1/Fp2)
 GND          →  All sensor grounds
 ```
 
@@ -48,10 +48,10 @@ GND          →  All sensor grounds
 5. Secure with medical tape or headband
 6. Check impedance - should be < 10kΩ
 
-## Step 3: Arduino Upload
+## Step 3: Firmware Upload
 
-1. Open Arduino IDE
-2. Load `arduino_3channel_eeg.ino`
+1. Open Flashing Tool
+2. Load `firmware_source.c`
 3. Select your board type (Tools → Board)
 4. Select COM port (Tools → Port)
 5. Upload code (Ctrl+U or Upload button)
@@ -77,8 +77,8 @@ Browser will open to `http://localhost:3000`
 
 ## Step 5: Connect & Test
 
-1. Click **"Connect to Arduino"** button
-2. Select your Arduino's COM port from popup
+1. Click **"Connect to Device"** button
+2. Select your Device's COM port from popup
 3. Wait for connection (status shows ● Connected)
 4. You should see all 3 channels updating
 
@@ -139,7 +139,7 @@ Browser will open to `http://localhost:3000`
 - ✅ Move away from electrical interference
 
 ### Channel Not Working:
-- ✅ Check Arduino wiring to that pin (A0/A1/A2)
+- ✅ Check wiring to that input (Input 1/2/3)
 - ✅ Verify sensor is powered
 - ✅ Test electrode impedance
 - ✅ Try different electrode position

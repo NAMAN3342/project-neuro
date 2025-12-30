@@ -9,22 +9,22 @@
 │                        HARDWARE LAYER                            │
 └─────────────────────────────────────────────────────────────────┘
 
-    Electrode CH1 (O1/O2)  →  A0  ┐
-    Electrode CH2 (Pz)     →  A1  ├─→  Arduino Uno/Nano
-    Electrode CH3 (Fp1/Fp2)→  A2  ┘
+    Electrode CH1 (O1/O2)  →  IN1 ┐
+    Electrode CH2 (Pz)     →  IN2 ├─→  Microcontroller Unit (MCU)
+    Electrode CH3 (Fp1/Fp2)→  IN3 ┘
     
     Sample Rate: 256 Hz
-    Baud Rate: 115200
+    Baud Rate: High Speed
 
                     ↓
 
 ┌─────────────────────────────────────────────────────────────────┐
-│                    ARDUINO PROCESSING                            │
+│                    FIRMWARE PROCESSING                           │
 └─────────────────────────────────────────────────────────────────┘
 
     FOR EACH CHANNEL (CH1, CH2, CH3):
     
-    Raw ADC Value (0-1023)
+    Raw ADC Value
            ↓
     [PROPRIETARY PRE-PROCESSING BLOCK]
     (DC Removal + Noise Suppression + Artifact Rejection)
@@ -184,13 +184,13 @@ App
 
 ```
 Time: 0ms
-  Arduino: Read analog pins A0, A1, A2
+  MCU: Read analog inputs
   
 Time: 1ms
-  Arduino: Process filters for all 3 channels
+  MCU: Process filters for all 3 channels
   
 Time: 2ms
-  Arduino: Send serial data (one line with all 3 channels)
+  MCU: Send serial data (one line with all 3 channels)
   
 Time: 3ms
   Browser: Receive serial data via Web Serial API
@@ -208,7 +208,7 @@ Time: 7.8ms (1/128 Hz)
   → REPEAT
 ```
 
-## Filter Coefficients (Arduino)
+## Filter Coefficients (Firmware)
 
 ```
 Band    | Cutoff | Coefficient | Speed
@@ -222,7 +222,7 @@ Beta    | 13-30  | 0.15, 0.07  | Fast     ████████████�
 ## Performance Metrics
 
 ```
-Arduino Processing:
+MCU Processing:
   - Analog Read: ~100 µs per channel
   - Filter Processing: ~50 µs per channel
   - Total per sample: ~500 µs (0.5 ms)
@@ -250,7 +250,7 @@ React Rendering:
 ├──────────┼─────────────┼─────────────┼─────────────┤
 │ Location │ Occipital   │ Parietal    │ Frontal     │
 │ Position │ O1/O2       │ Pz          │ Fp1/Fp2     │
-│ Pin      │ A0          │ A1          │ A2          │
+│ Pin      │ Input 1     │ Input 2     │ Input 3     │
 │ Best For │ Alpha       │ Theta/Alpha │ Beta        │
 │ Eyes     │ High impact │ Some impact │ Low impact  │
 │ Focus    │ Low impact  │ Some impact │ High impact │
@@ -335,7 +335,7 @@ Total:                    ~20 MB
 ## File Size Summary
 
 ```
-arduino_3channel_eeg.ino    ~4 KB
+firmware_source.c         ~4 KB
 App.js                      ~6 KB
 DominantWave.js            ~3 KB
 FrequencySpectrum.js       ~5 KB

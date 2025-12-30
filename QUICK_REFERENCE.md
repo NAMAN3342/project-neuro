@@ -10,12 +10,12 @@ npm start
 
 Browser opens to: `http://localhost:3000`
 
-## Arduino Connections
+## Hardware Connections
 
 ```
-A0 → Channel 1 (Occipital - O1/O2)  ← Alpha detection
-A1 → Channel 2 (Parietal - Pz)      ← Mixed activity  
-A2 → Channel 3 (Frontal - Fp1/Fp2)  ← Beta/focus
+Input 1 → Channel 1 (Occipital - O1/O2)  ← Alpha detection
+Input 2 → Channel 2 (Parietal - Pz)      ← Mixed activity  
+Input 3 → Channel 3 (Frontal - Fp1/Fp2)  ← Beta/focus
 ```
 
 ## Expected Serial Output
@@ -26,10 +26,10 @@ CH1 D:0.xxx T:0.xxx A:0.xxx B:0.xxx | CH2 D:0.xxx T:0.xxx A:0.xxx B:0.xxx | CH3 
 
 ## Usage Flow
 
-1. **Upload** `arduino_3channel_eeg.ino` to Arduino
+1. **Flash** firmware to MCU
 2. **Connect** electrodes to head
 3. **Run** `npm start`
-4. **Click** "Connect to Arduino"
+4. **Click** "Connect to Device"
 5. **Select** COM port
 6. **Switch** between channels with buttons
 7. **Test** by closing eyes (CH1 alpha should increase)

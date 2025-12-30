@@ -32,17 +32,17 @@ We combine two distinct data streams to increase prediction accuracy:
 This application utilizes a dedicated AI pipeline:
 
 ### 1. Emotion Detection Engine
-- **Model**: CNN-LSTM Hybrid.
-- **Input**: Spectrograms of 3-channel EEG + Temperature scalar.
-- **Output**: 2D Valence-Arousal mapping (Happy, Sad, Stressed, Calm).
+- **Model**: Advanced Deep Learning Neural Network.
+- **Input**: Multi-modal sensor fusion data.
+- **Output**: Real-time emotional state classification.
 
 ### 2. Stress & Burnout Tracker
-- Long-term tracking of Cortisol levels (inferred via chronic Beta dominance and low peripheral temp).
+- Long-term tracking of physiological stress markers.
 - Alerts user to take breaks or practice breathing exercises when thresholds are crossed.
 
 ### 3. Sleep Disorder Analysis
-- **Hypnogram Generation**: Automated staging of sleep (REM, NREM, Awake).
-- **Apnea Detection**: Correlating movement artifacts with oxygen desaturation patterns (if SpO2 module attached).
+- **Sleep Staging**: Automated analysis of sleep cycles.
+- **Anomaly Detection**: Correlating movement artifacts with physiological patterns.
 
 ## � Confidentiality & Research Note
 

@@ -24,11 +24,11 @@ Current implementation focuses on a hybrid input method:
 2.  **Motor Cortex EEG**: Monitors the Broca's area (approximate) for speech intent and start/stop signals.
 
 ### AI Translation Pipeline
-1.  **Signal Acquisition**: 256Hz sampling of EMG/EEG.
-2.  **Feature Extraction**: Mel-frequency cepstral coefficients (MFCCs) adapted for EMG.
+1.  **Signal Acquisition**: High-resolution sampling of EMG/EEG.
+2.  **Feature Extraction**: Advanced bio-signal feature processing.
 3.  **Decoding Model**:
-    *   **Transformer Architecture**: Maps muscle signal sequences to phoneme sequences.
-    *   **LLM Integration**: Context-aware correction of decoded words to ensure grammatical sentences.
+    *   **Neural Decoding**: Maps muscle signal sequences to phoneme sequences.
+    *   **Contextual Correction**: AI-driven correction of decoded words to ensure grammatical sentences.
 4.  **Synthesis**: Text-to-Speech (TTS) engine vocalizes the decoded thought.
 
 ## 🚧 Current Status & Roadmap
