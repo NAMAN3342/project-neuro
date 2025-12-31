@@ -25,10 +25,14 @@ Currently, the system is in the **Hardware Prototype** phase, featuring a fully 
 ## 📸 Gallery
 
 ### Web Interface
-<img width="1076" height="686" alt="image" src="https://github.com/user-attachments/assets/2af51428-17aa-48e6-a176-109242021b92" />
+<img width="1076" height="686" alt="image" src="https://github.com/NAMAN3342/project-neuro/blob/main/assets/screenshots/load.png" />
+
+<!-- https://github.com/user-attachments/assets/2af51428-17aa-48e6-a176-109242021b92 -->
 
 > The dashboard visualizing real-time brainwave activity using the Stockwell Transform.
-<img width="1901" height="918" alt="image" src="https://github.com/user-attachments/assets/aafe0bf3-f8f4-45ed-94da-1b5e49675109" />
+<img width="1901" height="918" alt="image" src="https://github.com/NAMAN3342/project-neuro/blob/main/assets/screenshots/main.png" />
+
+<!-- https://github.com/user-attachments/assets/aafe0bf3-f8f4-45ed-94da-1b5e49675109 -->
 
 ### Hardware Prototype
 *(Placeholder for Hardware Photo - To be added)*
