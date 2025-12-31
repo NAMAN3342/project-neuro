@@ -25,12 +25,12 @@ Currently, the system is in the **Hardware Prototype** phase, featuring a fully 
 ## 📸 Gallery
 
 ### Web Interface
-<img width="1076" height="686" alt="image" src="https://github.com/NAMAN3342/project-neuro/blob/main/assets/screenshots/load.png" />
+<img width="1076" height="686" alt="image" src="https://github.com/NAMAN3342/project-neuro/blob/main/assets/images/load.png" />
 
 <!-- https://github.com/user-attachments/assets/2af51428-17aa-48e6-a176-109242021b92 -->
 
 > The dashboard visualizing real-time brainwave activity using the Stockwell Transform.
-<img width="1901" height="918" alt="image" src="https://github.com/NAMAN3342/project-neuro/blob/main/assets/screenshots/main.png" />
+<img width="1901" height="918" alt="image" src="https://github.com/NAMAN3342/project-neuro/blob/main/assets/images/main.png" />
 
 <!-- https://github.com/user-attachments/assets/aafe0bf3-f8f4-45ed-94da-1b5e49675109 -->
 
@@ -41,6 +41,11 @@ Currently, the system is in the **Hardware Prototype** phase, featuring a fully 
 ### Demo Video
 *(Placeholder for Demo Video Link - To be added)*
 > Watch the system in action.
+
+### Auto Scroller
+<img width="1076" height="686" alt="image" src="https://github.com/NAMAN3342/project-neuro/blob/main/assets/images/auto_scroller.png" />
+
+> Hands-free scrolling using EOG-based blink detection.
 
 ---
 
@@ -77,6 +82,10 @@ Unlike standard FFT which loses time information, we have implemented the **Stoc
 - **Live Spectrogram**: Visualizing the S-Transform output.
 - **3D Brain Visualization**: Mapping activity to brain regions.
 - **Band Power Analysis**: Delta, Theta, Alpha, Beta, Gamma breakdown.
+
+### **4. Hands-Free Control (Auto Scroller)**
+- **EOG-Based Control**: Detects vertical eye movements (blinks) to trigger actions.
+- **Python Integration**: A dedicated script (`dev/auto_scroller.py`) processes real-time signals to simulate key presses (e.g., Down Arrow) for reading or browsing without hands.
 
 ---
 
