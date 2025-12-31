@@ -5,6 +5,8 @@ import WaveformDisplay from './WaveformDisplay';
 import StockwellSpectrogram from './StockwellSpectrogram';
 import ChannelSelector from './ChannelSelector';
 import PowerModeSelector from './PowerModeSelector';
+import ThemeToggle from './ThemeToggle';
+import InfoTooltip from './InfoTooltip';
 import './MainDashboard.css';
 
 const MainDashboard = ({
@@ -15,17 +17,19 @@ const MainDashboard = ({
   powerMode,
   setPowerMode,
   onConnect,
-  onDisconnect
+  onDisconnect,
+  theme,
+  toggleTheme
 }) => {
   const currentChannel = channelData[`ch${selectedChannel}`];
   
   const getDominantWave = () => {
     const waves = [
-      { name: 'Delta', value: currentChannel.delta, color: '#ff6b6b', emoji: '🌙' },
-      { name: 'Theta', value: currentChannel.theta, color: '#ffd93d', emoji: '🧘' },
-      { name: 'Alpha', value: currentChannel.alpha, color: '#6bcb77', emoji: '😌' },
-      { name: 'Beta', value: currentChannel.beta, color: '#4d96ff', emoji: '🧠' },
-      { name: 'Gamma', value: currentChannel.gamma, color: '#9b59b6', emoji: '⚡' }
+      { name: 'Delta', value: currentChannel.delta, color: '#ff6b6b' },
+      { name: 'Theta', value: currentChannel.theta, color: '#ffd93d' },
+      { name: 'Alpha', value: currentChannel.alpha, color: '#6bcb77' },
+      { name: 'Beta', value: currentChannel.beta, color: '#4d96ff' },
+      { name: 'Gamma', value: currentChannel.gamma, color: '#9b59b6' }
     ];
     return waves.reduce((a, b) => a.value > b.value ? a : b);
   };
@@ -34,7 +38,7 @@ const MainDashboard = ({
 
   return (
     <div className="main-dashboard">
-      {/* Header */}
+      
       <header className="dashboard-header">
         <div className="logo">
           <span className="logo-project">PROJECT</span>
@@ -42,6 +46,8 @@ const MainDashboard = ({
         </div>
         
         <div className="header-controls">
+          <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+          
           <PowerModeSelector mode={powerMode} setMode={setPowerMode} />
           
           <button 
@@ -54,12 +60,12 @@ const MainDashboard = ({
         </div>
       </header>
 
-      {/* Main Content */}
+      
       <div className="dashboard-content">
-        {/* Left Panel - 3D Brain */}
+        
         <div className="panel brain-panel">
           <div className="panel-header">
-            <h3>Neural Activity Map</h3>
+            <h3>Neural Activity Map<InfoTooltip text="Interactive 3D visualization of brain activity. Electrode positions (O1/O2, Pz, Fp1/Fp2) show real-time signal intensity. Drag to rotate, scroll to zoom." /></h3>
             <span className="panel-badge">3D View</span>
           </div>
           <BrainVisualizer 
@@ -68,10 +74,10 @@ const MainDashboard = ({
           />
         </div>
 
-        {/* Center Panel - Spectrum */}
+          
         <div className="panel spectrum-panel">
           <div className="panel-header">
-            <h3>Frequency Spectrum</h3>
+            <h3>Frequency Spectrum<InfoTooltip text="Displays the power distribution across different frequency bands (Delta, Theta, Alpha, Beta, Gamma) using Stockwell Transform analysis." /></h3>
             <span className="panel-badge">Stockwell Transform</span>
           </div>
           
@@ -83,9 +89,9 @@ const MainDashboard = ({
           
           <SpectrumDisplay data={currentChannel} />
           
-          {/* Stockwell Spectrogram - Real Time-Frequency Graph */}
+          
           <div className="panel-header" style={{ marginTop: '15px' }}>
-            <h3>Stockwell Spectrogram</h3>
+            <h3>Stockwell Spectrogram<InfoTooltip text="Real-time time-frequency representation showing how brain wave frequencies evolve over time. Brighter colors indicate higher power at that frequency." /></h3>
             <span className="panel-badge">Time-Frequency</span>
           </div>
           <StockwellSpectrogram 
@@ -93,11 +99,11 @@ const MainDashboard = ({
             frequencies={currentChannel.frequencies}
           />
           
-          {/* Dominant Wave Card */}
+          
           <div className="dominant-card" style={{ borderColor: dominant.color }}>
             <div className="dominant-emoji">{dominant.emoji}</div>
             <div className="dominant-info">
-              <span className="dominant-label">Dominant Wave</span>
+              <span className="dominant-label">Dominant Wave<InfoTooltip position="top" text="The brain wave with the highest power at this moment. Delta=deep sleep, Theta=meditation, Alpha=relaxation, Beta=focus, Gamma=high cognition." /></span>
               <span className="dominant-name" style={{ color: dominant.color }}>
                 {dominant.name}
               </span>
@@ -108,10 +114,10 @@ const MainDashboard = ({
           </div>
         </div>
 
-        {/* Right Panel - Waveform */}
+        
         <div className="panel waveform-panel">
           <div className="panel-header">
-            <h3>Raw EEG Signal</h3>
+            <h3>Raw EEG Signal<InfoTooltip text="Live waveform display of the unprocessed EEG voltage signal from the selected electrode channel. Shows real-time brain electrical activity." /></h3>
             <span className="panel-badge">Channel {selectedChannel}</span>
           </div>
           <WaveformDisplay 
@@ -119,7 +125,7 @@ const MainDashboard = ({
             color={dominant.color}
           />
           
-          {/* Band Powers */}
+          
           <div className="band-powers">
             <BandPowerBar name="Delta" value={currentChannel.delta} color="#ff6b6b" />
             <BandPowerBar name="Theta" value={currentChannel.theta} color="#ffd93d" />
@@ -130,7 +136,7 @@ const MainDashboard = ({
         </div>
       </div>
 
-      {/* Footer Status */}
+      
       <footer className="dashboard-footer">
         <div className="status-item">
           <span className="status-label">Sample Rate</span>
@@ -153,10 +159,18 @@ const MainDashboard = ({
   );
 };
 
+const bandInfo = {
+  Delta: 'Delta waves (0.5-4 Hz): Associated with deep sleep, healing, and regeneration. High during unconscious states.',
+  Theta: 'Theta waves (4-8 Hz): Linked to meditation, creativity, and light sleep. Present during deep relaxation and REM.',
+  Alpha: 'Alpha waves (8-13 Hz): Indicates calm, relaxed alertness. Prominent when eyes are closed and during mindfulness.',
+  Beta: 'Beta waves (13-30 Hz): Associated with active thinking, focus, and alertness. Dominant during problem-solving.',
+  Gamma: 'Gamma waves (30-100 Hz): Related to high-level cognition, perception, and consciousness. Peak during intense focus.'
+};
+
 const BandPowerBar = ({ name, value, color }) => (
   <div className="band-power-bar">
     <div className="band-info">
-      <span className="band-name">{name}</span>
+      <span className="band-name">{name}<InfoTooltip position="top" text={bandInfo[name]} /></span>
       <span className="band-value">{value.toFixed(1)}%</span>
     </div>
     <div className="bar-track">

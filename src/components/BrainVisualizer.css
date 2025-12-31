@@ -2,10 +2,77 @@
   flex: 1;
   min-height: 300px;
   position: relative;
+  background: linear-gradient(135deg, #0f0a1a 0%, #050208 50%, #000000 100%);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 
+    0 0 30px rgba(139, 92, 246, 0.1),
+    inset 0 0 60px rgba(139, 92, 246, 0.05);
 }
 
 .brain-canvas {
   width: 100%;
   height: 100%;
   display: block;
+}
+
+.brain-overlay {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  pointer-events: none;
+}
+
+.brain-label {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: rgba(139, 92, 246, 0.6);
+  text-transform: uppercase;
+  padding: 4px 8px;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 4px;
+}
+
+/* Subtle animated border glow */
+.brain-visualizer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.3),
+    rgba(59, 130, 246, 0.2),
+    rgba(236, 72, 153, 0.2),
+    rgba(139, 92, 246, 0.3)
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: borderPulse 4s ease-in-out infinite;
+}
+
+@keyframes borderPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Corner accents */
+.brain-visualizer::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid rgba(139, 92, 246, 0.5);
+  border-right: 2px solid rgba(139, 92, 246, 0.5);
+  pointer-events: none;
 }

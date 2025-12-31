@@ -6,8 +6,8 @@
 
 .channel-btn {
   flex: 1;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 10px;
   cursor: pointer;
@@ -16,12 +16,12 @@
 }
 
 .channel-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--bg-tertiary);
 }
 
 .channel-btn.active {
-  background: rgba(0, 255, 157, 0.1);
-  border-color: #00ff9d;
+  background: var(--accent-bg);
+  border-color: var(--accent-color);
 }
 
 .channel-header {
@@ -32,29 +32,32 @@
 }
 
 .channel-num {
-  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: var(--text-primary);
   font-weight: 600;
   font-size: 12px;
 }
 
 .channel-label {
-  color: #666;
+  color: var(--text-muted);
   font-size: 10px;
   text-transform: uppercase;
 }
 
 .channel-btn.active .channel-label {
-  color: #00ff9d;
+  color: var(--accent-color);
 }
 
 .signal-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #333;
+  background: var(--scrollbar-thumb);
 }
 
 .signal-dot.active {
-  background: #00ff9d;
-  box-shadow: 0 0 5px #00ff9d;
+  background: var(--accent-color);
+  box-shadow: 0 0 5px var(--accent-color);
 }

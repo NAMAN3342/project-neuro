@@ -58,18 +58,15 @@ const FrequencySpectrum = ({ bandPowers, channel }) => {
     ctx.lineTo(width - padding, height - padding);
     ctx.stroke();
 
-    // Draw spectrum bars
     bands.forEach((band, index) => {
       const value = bandPowers[band.key];
       const barHeight = (value * chartHeight);
       const x = padding + spacing * index + spacing / 2 - barWidth / 2;
       const y = height - padding - barHeight;
 
-      // Draw bar with glow effect
       ctx.shadowBlur = 20;
       ctx.shadowColor = band.color;
       
-      // Gradient fill
       const gradient = ctx.createLinearGradient(x, y, x, height - padding);
       gradient.addColorStop(0, band.color);
       gradient.addColorStop(1, band.color + '40');
@@ -79,35 +76,29 @@ const FrequencySpectrum = ({ bandPowers, channel }) => {
       
       ctx.shadowBlur = 0;
 
-      // Draw border
       ctx.strokeStyle = band.color;
       ctx.lineWidth = 1.5;
       ctx.strokeRect(x, y, barWidth, barHeight);
 
-      // Draw frequency label
       ctx.fillStyle = '#8892b0';
       ctx.font = '11px Arial';
       ctx.textAlign = 'center';
       ctx.fillText(band.freq, x + barWidth / 2, height - padding + 20);
 
-      // Draw band name
       ctx.fillStyle = band.color;
       ctx.font = 'bold 13px Arial';
       ctx.fillText(band.name, x + barWidth / 2, height - padding + 38);
 
-      // Draw power value on top of bar
       ctx.fillStyle = '#ffffff';
       ctx.font = 'bold 12px Courier New';
       ctx.fillText((value * 100).toFixed(1) + '%', x + barWidth / 2, y - 8);
     });
 
-    // Draw title
     ctx.fillStyle = '#00ff9d';
     ctx.font = 'bold 14px Arial';
     ctx.textAlign = 'center';
     ctx.fillText(`POWER SPECTRAL DENSITY - Channel ${channel}`, width / 2, 25);
 
-    // Draw Y-axis label
     ctx.save();
     ctx.translate(20, height / 2);
     ctx.rotate(-Math.PI / 2);

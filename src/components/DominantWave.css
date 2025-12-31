@@ -1,24 +1,25 @@
 .dominant-wave {
-  background: rgba(17, 25, 40, 0.95);
-  border: 1px solid rgba(0, 255, 157, 0.2);
+  background: var(--bg-panel);
+  border: 1px solid var(--accent-border);
   padding: 25px;
   border-radius: 8px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   margin-bottom: 20px;
   position: relative;
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .channel-badge {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: rgba(0, 255, 157, 0.1);
-  color: #00ff9d;
+  background: var(--accent-bg);
+  color: var(--accent-color);
   padding: 5px 15px;
   border-radius: 15px;
   font-size: 0.85rem;
   font-weight: bold;
-  border: 1px solid rgba(0, 255, 157, 0.3);
+  border: 1px solid var(--accent-border);
 }
 
 .wave-grid {
@@ -29,7 +30,7 @@
 }
 
 .section-label {
-  color: #64ffda;
+  color: var(--accent-color);
   font-size: 0.75rem;
   font-weight: bold;
   letter-spacing: 2px;
@@ -48,7 +49,7 @@
   padding: 20px 40px;
   border: 2px solid;
   border-radius: 8px;
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--canvas-bg);
   margin-bottom: 10px;
 }
 
@@ -64,7 +65,7 @@
 }
 
 .wave-state {
-  color: #8892b0;
+  color: var(--text-secondary);
   font-size: 1rem;
   margin-top: 8px;
 }
@@ -80,23 +81,23 @@
 }
 
 .metric {
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--canvas-bg);
   padding: 15px;
   border-radius: 6px;
-  border: 1px solid rgba(100, 255, 218, 0.2);
+  border: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
 .metric-label {
-  color: #64ffda;
+  color: var(--accent-color);
   font-size: 0.85rem;
   font-family: 'Courier New', monospace;
 }
 
 .metric-value {
-  color: #00ff9d;
+  color: var(--accent-color);
   font-size: 1.5rem;
   font-weight: bold;
   font-family: 'Courier New', monospace;
@@ -109,24 +110,24 @@
 .alpha-alert {
   padding: 20px;
   border-radius: 8px;
-  background: rgba(0, 0, 0, 0.3);
-  border: 2px solid rgba(136, 146, 176, 0.3);
+  background: var(--canvas-bg);
+  border: 2px solid var(--border-color);
   transition: all 0.3s ease;
 }
 
 .alpha-alert.active {
-  background: rgba(0, 255, 157, 0.1);
-  border-color: #00ff9d;
-  box-shadow: 0 0 30px rgba(0, 255, 157, 0.3);
+  background: var(--accent-bg);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 30px var(--accent-glow);
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
+    box-shadow: 0 0 20px var(--accent-glow);
   }
   50% {
-    box-shadow: 0 0 40px rgba(0, 255, 157, 0.6);
+    box-shadow: 0 0 40px var(--accent-glow);
   }
 }
 
@@ -136,7 +137,7 @@
 }
 
 .alert-text {
-  color: #8892b0;
+  color: var(--text-secondary);
   font-size: 1rem;
   font-weight: bold;
   margin-bottom: 5px;
@@ -144,12 +145,12 @@
 }
 
 .alpha-alert.active .alert-text {
-  color: #00ff9d;
-  text-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
+  color: var(--accent-color);
+  text-shadow: 0 0 10px var(--accent-glow);
 }
 
 .alert-detail {
-  color: #64ffda;
+  color: var(--accent-color);
   font-size: 0.85rem;
   font-family: 'Courier New', monospace;
 }
@@ -159,13 +160,13 @@
   border-left: 3px solid #00d4ff;
   padding: 15px;
   border-radius: 4px;
-  color: #8892b0;
+  color: var(--text-secondary);
   font-size: 0.9rem;
   line-height: 1.6;
 }
 
 .info-note strong {
-  color: #00ff9d;
+  color: var(--accent-color);
 }
 
 @media (max-width: 768px) {

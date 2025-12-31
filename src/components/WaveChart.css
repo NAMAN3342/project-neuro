@@ -1,13 +1,14 @@
 .wave-chart {
-  background: rgba(17, 25, 40, 0.95);
-  border: 1px solid rgba(0, 255, 157, 0.2);
+  background: var(--bg-panel);
+  border: 1px solid var(--accent-border);
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .wave-chart h2 {
-  color: #00ff9d;
+  color: var(--accent-color);
   margin-bottom: 20px;
   text-align: center;
   font-weight: 300;
@@ -29,7 +30,7 @@
   align-items: center;
   gap: 8px;
   font-size: 0.95rem;
-  color: #8892b0;
+  color: var(--text-secondary);
   font-family: 'Courier New', monospace;
 }
 
@@ -43,15 +44,15 @@
 .chart-canvas {
   width: 100%;
   height: auto;
-  border: 1px solid rgba(100, 255, 218, 0.2);
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   display: block;
-  background: #0a0e27;
+  background: var(--bg-primary);
 }
 
 .chart-info {
   text-align: center;
-  color: #7f8c8d;
+  color: var(--text-muted);
   font-size: 0.9rem;
   margin-top: 15px;
   font-style: italic;

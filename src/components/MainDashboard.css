@@ -1,11 +1,12 @@
 .main-dashboard {
   width: 100vw;
   height: 100vh;
-  background: #000000;
+  background: var(--bg-primary);
   display: flex;
   flex-direction: column;
-  color: #ffffff;
+  color: var(--text-primary);
   font-family: 'Inter', -apple-system, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* Header */
@@ -14,7 +15,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .logo {
@@ -26,15 +27,15 @@
 .logo-project {
   font-size: 12px;
   letter-spacing: 4px;
-  color: #666;
+  color: var(--text-muted);
 }
 
 .logo-neuro {
   font-size: 24px;
   font-weight: 600;
   letter-spacing: 3px;
-  color: #00ff9d;
-  text-shadow: 0 0 20px rgba(0, 255, 157, 0.5);
+  color: var(--accent-color);
+  text-shadow: 0 0 20px var(--accent-glow);
 }
 
 .header-controls {
@@ -48,22 +49,22 @@
   align-items: center;
   gap: 10px;
   padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  color: #fff;
+  color: var(--text-primary);
   font-size: 14px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .connect-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: #00ff9d;
+  background: var(--bg-tertiary);
+  border-color: var(--accent-color);
 }
 
 .connect-btn.connected {
-  border-color: #00ff9d;
+  border-color: var(--accent-color);
 }
 
 .status-dot {
@@ -74,8 +75,8 @@
 }
 
 .connect-btn.connected .status-dot {
-  background: #00ff9d;
-  box-shadow: 0 0 10px #00ff9d;
+  background: var(--accent-color);
+  box-shadow: 0 0 10px var(--accent-color);
 }
 
 /* Main Content */
@@ -90,12 +91,13 @@
 
 /* Panels */
 .panel {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--bg-panel);
+  border: 1px solid var(--border-subtle);
   border-radius: 16px;
   padding: 20px;
   display: flex;
   flex-direction: column;
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .panel-header {
@@ -106,20 +108,23 @@
 }
 
 .panel-header h3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
   font-size: 14px;
   font-weight: 500;
-  color: #999;
+  color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
 .panel-badge {
   padding: 4px 10px;
-  background: rgba(0, 255, 157, 0.1);
-  border: 1px solid rgba(0, 255, 157, 0.3);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
   border-radius: 4px;
   font-size: 10px;
-  color: #00ff9d;
+  color: var(--accent-color);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -142,11 +147,12 @@
   align-items: center;
   gap: 15px;
   padding: 15px 20px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
   border-left-width: 3px;
   border-radius: 10px;
   margin-top: 20px;
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .dominant-emoji {
@@ -160,8 +166,11 @@
 }
 
 .dominant-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
   font-size: 11px;
-  color: #666;
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -205,19 +214,22 @@
 }
 
 .band-name {
-  color: #666;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .band-value {
-  color: #999;
+  color: var(--text-secondary);
   font-family: 'Courier New', monospace;
 }
 
 .bar-track {
   height: 4px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--border-subtle);
   border-radius: 2px;
   overflow: hidden;
 }
@@ -234,7 +246,7 @@
   justify-content: center;
   gap: 40px;
   padding: 15px 30px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--border-subtle);
 }
 
 .status-item {
@@ -245,14 +257,14 @@
 
 .status-label {
   font-size: 11px;
-  color: #444;
+  color: var(--text-dark);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .status-value {
   font-size: 12px;
-  color: #00ff9d;
+  color: var(--accent-color);
   font-family: 'Courier New', monospace;
 }
 

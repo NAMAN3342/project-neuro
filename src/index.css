@@ -1,3 +1,49 @@
+/* Theme Variables */
+:root {
+  /* Dark Theme (Default) */
+  --bg-primary: #000000;
+  --bg-secondary: rgba(255, 255, 255, 0.05);
+  --bg-tertiary: rgba(0, 0, 0, 0.3);
+  --bg-panel: rgba(255, 255, 255, 0.02);
+  --text-primary: #ffffff;
+  --text-secondary: #999999;
+  --text-muted: #666666;
+  --text-dark: #444444;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --accent-color: #00ff9d;
+  --accent-glow: rgba(0, 255, 157, 0.5);
+  --accent-bg: rgba(0, 255, 157, 0.1);
+  --accent-border: rgba(0, 255, 157, 0.3);
+  --scrollbar-track: #000000;
+  --scrollbar-thumb: #333333;
+  --scrollbar-hover: #555555;
+  --canvas-bg: rgba(0, 0, 0, 0.3);
+  --spectrogram-bg: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="light"] {
+  --bg-primary: #f5f7fa;
+  --bg-secondary: rgba(0, 0, 0, 0.05);
+  --bg-tertiary: rgba(255, 255, 255, 0.8);
+  --bg-panel: rgba(255, 255, 255, 0.9);
+  --text-primary: #1a1a2e;
+  --text-secondary: #555555;
+  --text-muted: #888888;
+  --text-dark: #aaaaaa;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --border-subtle: rgba(0, 0, 0, 0.05);
+  --accent-color: #00cc7d;
+  --accent-glow: rgba(0, 204, 125, 0.4);
+  --accent-bg: rgba(0, 204, 125, 0.1);
+  --accent-border: rgba(0, 204, 125, 0.4);
+  --scrollbar-track: #e0e0e0;
+  --scrollbar-thumb: #bbbbbb;
+  --scrollbar-hover: #999999;
+  --canvas-bg: rgba(240, 242, 245, 0.9);
+  --spectrogram-bg: rgba(230, 235, 240, 0.9);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -9,8 +55,10 @@ body {
   font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #0a0e27;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 code {

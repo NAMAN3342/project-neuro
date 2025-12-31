@@ -1,11 +1,12 @@
 .waveform-display {
   flex: 1;
   min-height: 200px;
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--canvas-bg);
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .waveform-canvas {

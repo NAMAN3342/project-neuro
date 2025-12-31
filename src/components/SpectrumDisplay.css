@@ -1,10 +1,11 @@
 .spectrum-display {
   flex: 1;
   min-height: 250px;
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--canvas-bg);
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 20px;
+  transition: background 0.3s ease;
 }
 
 .spectrum-canvas {

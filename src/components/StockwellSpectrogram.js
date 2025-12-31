@@ -5,7 +5,7 @@ const StockwellSpectrogram = ({ data, frequencies }) => {
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
   const spectrogramHistoryRef = useRef([]);
-  const MAX_HISTORY = 100; // Number of time slices to show
+  const MAX_HISTORY = 100;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -19,12 +19,10 @@ const StockwellSpectrogram = ({ data, frequencies }) => {
     resize();
     window.addEventListener('resize', resize);
 
-    // Color map for spectrogram (black -> blue -> cyan -> green -> yellow -> red -> white)
     const getColor = (value, max) => {
       const normalized = Math.min(1, Math.max(0, value / (max + 0.001)));
-      const intensity = Math.pow(normalized, 0.5); // Gamma correction for better visibility
+      const intensity = Math.pow(normalized, 0.5);
       
-      // Hot colormap
       if (intensity < 0.2) {
         const t = intensity / 0.2;
         return `rgb(${Math.floor(t * 50)}, 0, ${Math.floor(t * 100)})`;
@@ -43,7 +41,6 @@ const StockwellSpectrogram = ({ data, frequencies }) => {
       }
     };
 
-    // Band frequency ranges for labels
     const bandRanges = [
       { name: 'δ', min: 0.5, max: 4, color: '#ff6b6b' },
       { name: 'θ', min: 4, max: 8, color: '#ffd93d' },
@@ -63,9 +60,7 @@ const StockwellSpectrogram = ({ data, frequencies }) => {
       ctx.fillStyle = '#000000';
       ctx.fillRect(0, 0, width, height);
 
-      // Add current spectrogram slice to history
       if (data && data.spectrogram && data.spectrogram.length > 0) {
-        // Average the time dimension to get one frequency spectrum
         const freqSpectrum = data.spectrogram.map(freqBin => {
           if (!freqBin || freqBin.length === 0) return 0;
           return freqBin.reduce((a, b) => a + b, 0) / freqBin.length;
@@ -81,7 +76,6 @@ const StockwellSpectrogram = ({ data, frequencies }) => {
       const freqs = data?.frequencies || frequencies || [];
       
       if (history.length > 0 && freqs.length > 0) {
-        // Find max value for normalization
         let maxVal = 0;
         history.forEach(slice => {
           slice.forEach(val => {
@@ -89,7 +83,6 @@ const StockwellSpectrogram = ({ data, frequencies }) => {
           });
         });
 
-        // Draw spectrogram
         const timeStep = spectrogramWidth / MAX_HISTORY;
         const freqStep = spectrogramHeight / freqs.length;
 
@@ -97,7 +90,6 @@ const StockwellSpectrogram = ({ data, frequencies }) => {
           const x = startX + timeIdx * timeStep;
           
           slice.forEach((value, freqIdx) => {
-            // Invert Y so low frequencies are at bottom
             const y = startY + spectrogramHeight - (freqIdx + 1) * freqStep;
             
             ctx.fillStyle = getColor(value, maxVal);
@@ -105,12 +97,10 @@ const StockwellSpectrogram = ({ data, frequencies }) => {
           });
         });
 
-        // Draw frequency axis labels
         ctx.fillStyle = '#666';
         ctx.font = '10px monospace';
         ctx.textAlign = 'right';
         
-        // Show key frequencies
         const keyFreqs = [1, 4, 8, 13, 30, 50, 100];
         keyFreqs.forEach(freq => {
           const freqIdx = freqs.findIndex(f => f >= freq);
@@ -118,7 +108,6 @@ const StockwellSpectrogram = ({ data, frequencies }) => {
             const y = startY + spectrogramHeight - (freqIdx / freqs.length) * spectrogramHeight;
             ctx.fillText(`${freq}Hz`, startX - 5, y + 3);
             
-            // Grid line
             ctx.strokeStyle = 'rgba(255,255,255,0.1)';
             ctx.beginPath();
             ctx.moveTo(startX, y);
@@ -127,7 +116,6 @@ const StockwellSpectrogram = ({ data, frequencies }) => {
           }
         });
 
-        // Draw band markers on right side
         bandRanges.forEach(band => {
           const minIdx = freqs.findIndex(f => f >= band.min);
           const maxIdx = freqs.findIndex(f => f >= band.max);
@@ -141,7 +129,6 @@ const StockwellSpectrogram = ({ data, frequencies }) => {
             ctx.textAlign = 'left';
             ctx.fillText(band.name, startX + spectrogramWidth + 5, yMid + 4);
             
-            // Band bracket
             ctx.strokeStyle = band.color + '60';
             ctx.lineWidth = 2;
             ctx.beginPath();
@@ -151,27 +138,23 @@ const StockwellSpectrogram = ({ data, frequencies }) => {
           }
         });
 
-        // Time axis label
         ctx.fillStyle = '#444';
         ctx.font = '10px monospace';
         ctx.textAlign = 'center';
         ctx.fillText('← Time', startX + spectrogramWidth / 2, height - 5);
 
-        // Y-axis label
         ctx.save();
         ctx.translate(12, startY + spectrogramHeight / 2);
         ctx.rotate(-Math.PI / 2);
         ctx.fillText('Frequency (Hz)', 0, 0);
         ctx.restore();
       } else {
-        // No data placeholder
         ctx.fillStyle = '#333';
         ctx.font = '14px sans-serif';
         ctx.textAlign = 'center';
         ctx.fillText('Waiting for Stockwell Transform data...', width / 2, height / 2);
       }
 
-      // Color bar legend
       const barWidth = 15;
       const barHeight = spectrogramHeight;
       const barX = width - 25;

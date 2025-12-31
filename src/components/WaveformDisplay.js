@@ -24,11 +24,11 @@ const WaveformDisplay = ({ data, color }) => {
       ctx.fillStyle = '#000000';
       ctx.fillRect(0, 0, width, height);
       
-      // Grid lines
+      
       ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
       ctx.lineWidth = 1;
       
-      // Horizontal grid
+      
       for (let i = 0; i < 5; i++) {
         const y = (height / 4) * i;
         ctx.beginPath();
@@ -37,7 +37,7 @@ const WaveformDisplay = ({ data, color }) => {
         ctx.stroke();
       }
       
-      // Vertical grid
+      
       for (let i = 0; i < 10; i++) {
         const x = (width / 10) * i;
         ctx.beginPath();
@@ -56,7 +56,7 @@ const WaveformDisplay = ({ data, color }) => {
         ctx.beginPath();
         
         const step = width / data.length;
-        const scale = height / 200; // Adjust sensitivity
+        const scale = height / 200;
         const centerY = height / 2;
         
         for (let i = 0; i < data.length; i++) {

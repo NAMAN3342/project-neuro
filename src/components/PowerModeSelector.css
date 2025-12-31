@@ -1,6 +1,6 @@
 .power-mode-selector {
   display: flex;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-secondary);
   border-radius: 20px;
   padding: 4px;
   gap: 4px;
@@ -14,19 +14,19 @@
   border: none;
   background: transparent;
   border-radius: 16px;
-  color: #666;
+  color: var(--text-muted);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .mode-btn:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  background: var(--bg-secondary);
 }
 
 .mode-btn.active {
-  background: #00ff9d;
-  color: #000;
+  background: var(--accent-color);
+  color: var(--bg-primary);
   font-weight: 600;
 }
 

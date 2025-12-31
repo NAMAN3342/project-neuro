@@ -8,31 +8,44 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isConnected, setIsConnected] = useState(false);
   const [port, setPort] = useState(null);
+  const [theme, setTheme] = useState('dark');
   const [channelData, setChannelData] = useState({
     ch1: { raw: [], delta: 0, theta: 0, alpha: 0, beta: 0, gamma: 0 },
     ch2: { raw: [], delta: 0, theta: 0, alpha: 0, beta: 0, gamma: 0 },
     ch3: { raw: [], delta: 0, theta: 0, alpha: 0, beta: 0, gamma: 0 }
   });
   const [selectedChannel, setSelectedChannel] = useState(1);
-  const [powerMode, setPowerMode] = useState('optimized'); // 'optimized', 'performance', 'balanced'
+  const [powerMode, setPowerMode] = useState('optimized');
   
   const readerRef = useRef(null);
   const processorRef = useRef(null);
   const rawBufferRef = useRef({ ch1: [], ch2: [], ch3: [] });
-  const SAMPLE_RATE = 256; // Hz
-  const BUFFER_SIZE = 512; // samples for Stockwell Transform
+  const SAMPLE_RATE = 256;
+  const BUFFER_SIZE = 512;
 
   useEffect(() => {
-    // Initialize Stockwell Processor
+    
     processorRef.current = new StockwellProcessor(SAMPLE_RATE, BUFFER_SIZE);
     
-    // Loading animation duration
+    
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    setTheme(savedTheme);
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 4000);
     
     return () => clearTimeout(timer);
   }, []);
+
+  const toggleTheme = useCallback(() => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+  }, [theme]);
 
   const connectToArduino = useCallback(async () => {
     try {
@@ -75,7 +88,7 @@ function App() {
   }, []);
 
   const processRawData = useCallback((line) => {
-    // Expected format: ch1,ch2,ch3 (floats)
+    
     const parts = line.split(',');
     if (parts.length !== 3) return;
     
@@ -85,19 +98,19 @@ function App() {
     
     if (isNaN(ch1Val) || isNaN(ch2Val) || isNaN(ch3Val)) return;
     
-    // Add to buffers
+    
     rawBufferRef.current.ch1.push(ch1Val);
     rawBufferRef.current.ch2.push(ch2Val);
     rawBufferRef.current.ch3.push(ch3Val);
     
-    // Keep buffer size limited
+    
     if (rawBufferRef.current.ch1.length > BUFFER_SIZE) {
       rawBufferRef.current.ch1.shift();
       rawBufferRef.current.ch2.shift();
       rawBufferRef.current.ch3.shift();
     }
     
-    // Process with Stockwell Transform when we have enough samples
+    
     if (rawBufferRef.current.ch1.length >= BUFFER_SIZE && processorRef.current) {
       const results = {
         ch1: processorRef.current.analyze(rawBufferRef.current.ch1, powerMode),
@@ -140,6 +153,8 @@ function App() {
         setPowerMode={setPowerMode}
         onConnect={connectToArduino}
         onDisconnect={disconnect}
+        theme={theme}
+        toggleTheme={toggleTheme}
       />
     </div>
   );

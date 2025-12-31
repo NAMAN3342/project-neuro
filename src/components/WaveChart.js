@@ -19,15 +19,15 @@ const WaveChart = ({ history, channel }) => {
     const width = canvas.width;
     const height = canvas.height;
 
-    // Clear canvas
+    
     ctx.fillStyle = '#0a0e27';
     ctx.fillRect(0, 0, width, height);
 
-    // Draw grid
+    
     ctx.strokeStyle = 'rgba(100, 255, 218, 0.1)';
     ctx.lineWidth = 1;
     
-    // Horizontal lines
+    
     for (let i = 0; i <= 10; i++) {
       const y = (height / 10) * i;
       ctx.beginPath();
@@ -36,7 +36,7 @@ const WaveChart = ({ history, channel }) => {
       ctx.stroke();
     }
 
-    // Vertical lines
+    
     for (let i = 0; i <= 10; i++) {
       const x = (width / 10) * i;
       ctx.beginPath();
@@ -45,7 +45,7 @@ const WaveChart = ({ history, channel }) => {
       ctx.stroke();
     }
 
-    // Draw each band
+    
     bands.forEach(band => {
       const data = history[band.key];
       if (data.length < 2) return;
@@ -71,7 +71,7 @@ const WaveChart = ({ history, channel }) => {
       ctx.shadowBlur = 0;
     });
 
-    // Draw labels
+    
     ctx.fillStyle = '#64ffda';
     ctx.font = '11px Courier New';
     ctx.fillText('0%', 5, height - 5);

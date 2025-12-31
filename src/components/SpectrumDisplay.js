@@ -33,7 +33,7 @@ const SpectrumDisplay = ({ data }) => {
       ctx.fillStyle = '#000000';
       ctx.fillRect(0, 0, width, height);
       
-      // Smooth value transitions
+      
       bands.forEach(band => {
         const target = data[band.key] || 0;
         valuesRef.current[band.key] += (target - valuesRef.current[band.key]) * 0.15;
@@ -48,35 +48,35 @@ const SpectrumDisplay = ({ data }) => {
         const barHeight = (value / 100) * maxHeight;
         const y = height - 50 - barHeight;
         
-        // Glow effect
+        
         const gradient = ctx.createLinearGradient(x, y, x, height - 50);
         gradient.addColorStop(0, band.color);
         gradient.addColorStop(1, band.color + '20');
         
-        // Shadow/glow
+        
         ctx.shadowColor = band.color;
         ctx.shadowBlur = 20;
         ctx.fillStyle = gradient;
         
-        // Draw bar with rounded top
+        
         ctx.beginPath();
         ctx.roundRect(x, y, barWidth, barHeight, [8, 8, 0, 0]);
         ctx.fill();
         
         ctx.shadowBlur = 0;
         
-        // Value label
+        
         ctx.fillStyle = '#ffffff';
         ctx.font = 'bold 14px monospace';
         ctx.textAlign = 'center';
         ctx.fillText(`${Math.round(value)}%`, x + barWidth / 2, y - 10);
         
-        // Name label
+        
         ctx.fillStyle = band.color;
         ctx.font = '16px sans-serif';
         ctx.fillText(band.name, x + barWidth / 2, height - 25);
         
-        // Freq label
+        
         ctx.fillStyle = '#666';
         ctx.font = '10px sans-serif';
         ctx.fillText(band.freq, x + barWidth / 2, height - 10);
