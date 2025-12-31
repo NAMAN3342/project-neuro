@@ -20,8 +20,10 @@ function App() {
   const readerRef = useRef(null);
   const processorRef = useRef(null);
   const rawBufferRef = useRef({ ch1: [], ch2: [], ch3: [] });
+  const lastAnalysisTime = useRef(0);
   const SAMPLE_RATE = 256;
-  const BUFFER_SIZE = 512;
+  const BUFFER_SIZE = 256; // Reduced from 512 for faster response
+  const ANALYSIS_INTERVAL = 100; // Analyze every 100ms
 
   useEffect(() => {
     
@@ -112,6 +114,10 @@ function App() {
     
     
     if (rawBufferRef.current.ch1.length >= BUFFER_SIZE && processorRef.current) {
+      const now = Date.now();
+      if (now - lastAnalysisTime.current < ANALYSIS_INTERVAL) return;
+      lastAnalysisTime.current = now;
+      
       const results = {
         ch1: processorRef.current.analyze(rawBufferRef.current.ch1, powerMode),
         ch2: processorRef.current.analyze(rawBufferRef.current.ch2, powerMode),
@@ -138,6 +144,27 @@ function App() {
     setIsConnected(false);
   }, [port]);
 
+  const startTestMode = useCallback(() => {
+    setIsConnected(true);
+    const testInterval = setInterval(() => {
+      const t = Date.now();
+      const ch1Val = 512 + Math.sin(t * 0.01) * 50 + Math.random() * 20;
+      const ch2Val = 512 + Math.cos(t * 0.008) * 45 + Math.random() * 20;
+      const ch3Val = 512 + Math.sin(t * 0.012) * 40 + Math.random() * 20;
+      processRawData(`${ch1Val.toFixed(2)},${ch2Val.toFixed(2)},${ch3Val.toFixed(2)}`);
+    }, 1000 / SAMPLE_RATE);
+    window.testInterval = testInterval;
+  }, [processRawData, SAMPLE_RATE]);
+
+  const stopTestMode = useCallback(() => {
+    if (window.testInterval) {
+      clearInterval(window.testInterval);
+      window.testInterval = null;
+    }
+    setIsConnected(false);
+    rawBufferRef.current = { ch1: [], ch2: [], ch3: [] };
+  }, []);
+
   if (isLoading) {
     return <LoadingScreen />;
   }
@@ -152,7 +179,8 @@ function App() {
         powerMode={powerMode}
         setPowerMode={setPowerMode}
         onConnect={connectToArduino}
-        onDisconnect={disconnect}
+        onDisconnect={port ? disconnect : stopTestMode}
+        onTestMode={startTestMode}
         theme={theme}
         toggleTheme={toggleTheme}
       />

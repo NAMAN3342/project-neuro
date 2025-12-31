@@ -1,34 +1,97 @@
+/*************************************/
+#define SAMPLE_RATE 256
+#define BAUD_RATE 115200
 
-/*************************** this code is for research purpose only currently working on that *****************************************/
-
-/*************** CONFIG *****************/
-#define NUM_CH      3
-#define SAMPLE_RATE 128   // Hz
-
-const int inputPin[NUM_CH] = {A0, A1, A2};
-/****************************************/
+#define CH1_PIN A0
+#define CH2_PIN A1
+#define CH3_PIN A2
+/*************************************/
 
 unsigned long lastMicros = 0;
+long timer = 0;
 
-/************ DC REMOVAL *****************/
-float dc[NUM_CH] = {0};
+/************ FILTER STATE STRUCT ************/
+struct Biquad {
+  float z1 = 0;
+  float z2 = 0;
+};
 
-float dcRemove(int ch, float x) {
-  dc[ch] = 0.995 * dc[ch] + 0.005 * x;
-  return x - dc[ch];
+struct EEGFilterState {
+  Biquad s1, s2, s3, s4;
+};
+
+/************ FILTER FUNCTION ************/
+float EEGFilter(float input, EEGFilterState &st) {
+  float output = input;
+
+  // Section 1
+  {
+    float x = output - (-0.95391350f * st.s1.z1) - (0.25311356f * st.s1.z2);
+    output = 0.00735282f * x + 0.01470564f * st.s1.z1 + 0.00735282f * st.s1.z2;
+    st.s1.z2 = st.s1.z1;
+    st.s1.z1 = x;
+  }
+
+  // Section 2
+  {
+    float x = output - (-1.20596630f * st.s2.z1) - (0.60558332f * st.s2.z2);
+    output = x + 2.0f * st.s2.z1 + st.s2.z2;
+    st.s2.z2 = st.s2.z1;
+    st.s2.z1 = x;
+  }
+
+  // Section 3
+  {
+    float x = output - (-1.97690645f * st.s3.z1) - (0.97706395f * st.s3.z2);
+    output = x - 2.0f * st.s3.z1 + st.s3.z2;
+    st.s3.z2 = st.s3.z1;
+    st.s3.z1 = x;
+  }
+
+  // Section 4
+  {
+    float x = output - (-1.99071687f * st.s4.z1) - (0.99086813f * st.s4.z2);
+    output = x - 2.0f * st.s4.z1 + st.s4.z2;
+    st.s4.z2 = st.s4.z1;
+    st.s4.z1 = x;
+  }
+
+  return output;
 }
 
-/************ BAND FILTER STATES *********/
-// Delta
-float deltaY[NUM_CH] = {0};
+/************ FILTER STATES ************/
+EEGFilterState ch1, ch2, ch3;
 
-// Theta
-float thetaY1[NUM_CH] = {0};
-float thetaY2[NUM_CH] = {0};
+/************ SETUP ************/
+void setup() {
+  Serial.begin(BAUD_RATE);
+}
 
-// Alpha
-float alphaY1[NUM_CH] = {0};
-float alphaY2[NUM_CH] = {0};
+/************ LOOP ************/
+void loop() {
+  unsigned long now = micros();
+  unsigned long interval = now - lastMicros;
+  lastMicros = now;
+  timer -= interval;
+
+  if (timer <= 0) {
+    timer += 1000000L / SAMPLE_RATE;
+
+    float raw1 = analogRead(CH1_PIN);
+    float raw2 = analogRead(CH2_PIN);
+    float raw3 = analogRead(CH3_PIN);
+
+    float eeg1 = EEGFilter(raw1, ch1);
+    float eeg2 = EEGFilter(raw2, ch2);
+    float eeg3 = EEGFilter(raw3, ch3);
+
+    // CSV Output
+    Serial.print(eeg1); Serial.print(",");
+    Serial.print(eeg2); Serial.print(",");
+    Serial.println(eeg3);
+  }
+}
+
 
 // Beta
 float betaY1[NUM_CH]  = {0};

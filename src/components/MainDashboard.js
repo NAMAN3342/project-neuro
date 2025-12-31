@@ -18,6 +18,7 @@ const MainDashboard = ({
   setPowerMode,
   onConnect,
   onDisconnect,
+  onTestMode,
   theme,
   toggleTheme
 }) => {
@@ -25,11 +26,11 @@ const MainDashboard = ({
   
   const getDominantWave = () => {
     const waves = [
-      { name: 'Delta', value: currentChannel.delta, color: '#ff6b6b' },
-      { name: 'Theta', value: currentChannel.theta, color: '#ffd93d' },
-      { name: 'Alpha', value: currentChannel.alpha, color: '#6bcb77' },
-      { name: 'Beta', value: currentChannel.beta, color: '#4d96ff' },
-      { name: 'Gamma', value: currentChannel.gamma, color: '#9b59b6' }
+      { name: 'Delta', value: currentChannel.delta, color: '#ff6b6b', emoji: '😴' },
+      { name: 'Theta', value: currentChannel.theta, color: '#ffd93d', emoji: '🧘' },
+      { name: 'Alpha', value: currentChannel.alpha, color: '#6bcb77', emoji: '😌' },
+      { name: 'Beta', value: currentChannel.beta, color: '#4d96ff', emoji: '🎯' },
+      { name: 'Gamma', value: currentChannel.gamma, color: '#9b59b6', emoji: '⚡' }
     ];
     return waves.reduce((a, b) => a.value > b.value ? a : b);
   };
@@ -49,6 +50,16 @@ const MainDashboard = ({
           <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
           
           <PowerModeSelector mode={powerMode} setMode={setPowerMode} />
+          
+          {!isConnected && onTestMode && (
+            <button 
+              className="test-btn"
+              onClick={onTestMode}
+              style={{ marginRight: '10px' }}
+            >
+              🧪 Test Mode
+            </button>
+          )}
           
           <button 
             className={`connect-btn ${isConnected ? 'connected' : ''}`}
@@ -144,11 +155,11 @@ const MainDashboard = ({
         </div>
         <div className="status-item">
           <span className="status-label">Buffer</span>
-          <span className="status-value">512 samples</span>
+          <span className="status-value">256 samples</span>
         </div>
         <div className="status-item">
           <span className="status-label">Algorithm</span>
-          <span className="status-value">Stockwell Transform</span>
+          <span className="status-value">Fast FFT</span>
         </div>
         <div className="status-item">
           <span className="status-label">Mode</span>
