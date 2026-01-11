@@ -149,12 +149,12 @@ This video demonstrates the device in action. You can observe live values changi
 https://github.com/user-attachments/assets/3436feb3-7939-400d-9610-36bbdde0e7f0
 
 ### 2. ECG Signal Analysis
-This demonstration visualizes ECG signals captured from the Alpha, Beta, and Gamma nodes, highlighting the origin points of dominant signals.
+This demonstration visualizes EEG signals captured from the Alpha, Beta, and Gamma nodes, highlighting the origin points of dominant signals.
 
 https://github.com/user-attachments/assets/04b397a4-25dd-42b2-9fbd-30b4e03bb134
 
 **Screen Recording (High Clarity):**
-A direct screen capture of the ECG analysis shown above.
+A direct screen capture of the EEG analysis shown above.
 
 https://github.com/user-attachments/assets/b12f72ad-fc01-4af5-9376-a0f5f2028cb8
 
