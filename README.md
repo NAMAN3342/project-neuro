@@ -172,9 +172,8 @@ https://github.com/user-attachments/assets/5d752ffa-3619-4fb9-814c-f33a6bdb1ef8
 
 ## Conclusion
 
-Project Neuro stands as a testament to the democratization of neuroscience. By bridging the gap between expensive clinical equipment and accessible consumer electronics, we have successfully created a platform that effectively acts as a "Universal Controller" for the human body.
+Project Neuro proves that advanced brain technology doesn't have to be expensive or hard to use. We have built a "Universal Controller" that connects your body to the computer using just a web browser.
 
-Through the novel application of the **Stockwell Transform** in a browser-based environment, we have proven that high-fidelity signal analysis does not require proprietary drivers or massive computing rigs—just a USB connection and a web link. By hybridizing EEG, EMG, and EOG signals, we have moved beyond simple data visualization to create actionable, real-time control systems for assistive technology and gaming.
+By using the **Stockwell Transform**, we can see exactly what the brain is doing in real-time. This allows us to create tools that let people control screens with their eyes or their focus, without needing any complex software or drivers.
 
-This project is a stepping stone toward a future where human-computer interaction is seamless, intuitive, and bound only by the limits of the mind. We invite developers, researchers, and hobbyists to explore the repository, improve the signal processing chains, and help us push the boundaries of what is possible with open-source BCI technology.
-
+Our goal is to make neuroscience available to everyone. Whether for gaming, health monitoring, or helping people with disabilities, we hope this project inspires others to explore what is possible when you connect the human mind directly to the digital world.
