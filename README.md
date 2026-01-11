@@ -1,11 +1,25 @@
 # 🧠 Project Neuro: Modular BCI Headband Platform
 
 ---
+
 > Note: This video is AI-generated for demonstration purposes.
 
 
 https://github.com/user-attachments/assets/6c533493-7d1e-49d6-85fe-12a71d5d21ea
 
+---
+
+## Problem Statement
+
+**The Barrier to Brain-Computer Interfaces (BCI)**
+
+Currently, working with Brain-Computer Interfaces (technology that connects the brain to computers) is too difficult for most people. There are three main problems:
+
+1.  **Too Expensive:** Professional EEG equipment costs thousands of dollars, making it impossible for students and hobbyists to buy.
+2.  **Too Hard to Set Up:** Existing tools require complex software, special drivers, and difficult coding (like Python scripts) just to see basic data.
+3.  **Poor Data Quality:** Affordable devices often miss important details. They use basic math (like standard FFT) that loses time information, meaning you can't see *when* a brain signal happened, only *that* it happened.
+
+**Project Neuro solves this** by creating a low-cost, plug-and-play device that works directly in a web browser. It uses advanced math (Stockwell Transform) to give high-quality analysis without needing any installation or expensive gear.
 
 ---
 
@@ -16,6 +30,7 @@ Project Neuro is a modular Brain Computer Interface (BCI) platform that can reco
 Our objective is to close the gap between costly research equipment and inexpensive, subpar consumer devices. Through the use of a custom 3-channel headband and sophisticated signal processing (the Stockwell Transform) directly in a web browser, we enable users to control devices hands free for example, by blinking to scroll a webpage and visualize their mental state (such as focus or relaxation) with extreme precision. In the end, we are creating a "universal controller" for the human body.
 
 ---
+
 > Scroll Down too see the working of this Device and Architecture
 
 https://github.com/user-attachments/assets/7b157b8a-8b34-4283-852f-1ad7a49e62b4
