@@ -1,0 +1,174 @@
+.deep-thinking {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #0a0a12;
+  overflow: hidden;
+}
+
+.dt-bg-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.dt-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.dt-back-btn {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid rgba(155, 89, 182, 0.3);
+  color: #888;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.dt-back-btn:hover {
+  color: #fff;
+  border-color: #9b59b6;
+  background: rgba(155, 89, 182, 0.1);
+}
+
+.dt-back-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.dt-center {
+  text-align: center;
+  max-width: 500px;
+}
+
+.dt-icon {
+  font-size: 5rem;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 30px rgba(155, 89, 182, 0.5));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.dt-title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 16px;
+  letter-spacing: 0.1em;
+}
+
+.dt-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+  color: #fff;
+  padding: 8px 24px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  margin-bottom: 30px;
+}
+
+.dt-description {
+  color: #888;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.dt-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(155, 89, 182, 0.05);
+  border: 1px solid rgba(155, 89, 182, 0.15);
+  border-radius: 10px;
+}
+
+.feature-icon {
+  font-size: 1.5rem;
+}
+
+.feature-text {
+  color: #aaa;
+  font-size: 0.85rem;
+  text-align: left;
+}
+
+.dt-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.progress-label {
+  color: #666;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.progress-bar {
+  width: 200px;
+  height: 6px;
+  background: rgba(155, 89, 182, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #9b59b6, #8e44ad);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.progress-percent {
+  color: #9b59b6;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .dt-features {
+    grid-template-columns: 1fr;
+  }
+  
+  .dt-title {
+    font-size: 1.8rem;
+  }
+}

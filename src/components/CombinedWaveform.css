@@ -1,0 +1,19 @@
+.combined-waveform {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #050210;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.waveform-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Light theme */
+[data-theme="light"] .combined-waveform {
+  background: #f0f2f5;
+}

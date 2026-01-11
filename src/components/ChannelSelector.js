@@ -3,9 +3,9 @@ import InfoTooltip from './InfoTooltip';
 import './ChannelSelector.css';
 
 const channelInfo = {
-  1: { name: 'Occipital', tooltip: 'O1/O2 region - Visual processing area at the back of the head. Best for detecting Alpha waves when eyes are closed.' },
-  2: { name: 'Parietal', tooltip: 'Pz region - Central-top area processing sensory integration and spatial awareness. Good for attention monitoring.' },
-  3: { name: 'Frontal', tooltip: 'Fp1/Fp2 region - Front forehead area handling executive functions, focus, and decision making. Shows Beta during concentration.' }
+  1: { name: 'Fp1-Fp2', tooltip: 'Frontal (Fp1-Fp2) - Prefrontal cortex. Executive functions, attention, focus, and decision making. Shows Beta during concentration.' },
+  2: { name: 'C3-C4', tooltip: 'Motor (C3-C4) - Motor cortex. Left/Right hemisphere motor activity. Best for motor imagery and movement intention.' },
+  3: { name: 'O1-O2', tooltip: 'Occipital (O1-O2) - Visual cortex at the back of the head. Best for detecting Alpha waves when eyes are closed.' }
 };
 
 const ChannelSelector = ({ selected, setSelected, channelData }) => {

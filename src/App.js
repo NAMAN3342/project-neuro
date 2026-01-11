@@ -90,9 +90,12 @@ function App() {
   }, []);
 
   const processRawData = useCallback((line) => {
+    // Skip joystick/game mode data
+    if (line.startsWith('J,')) return;
     
     const parts = line.split(',');
-    if (parts.length !== 3) return;
+    // Arduino sends: sig0,sig1,sig2,t1,t2,t3,t4,t5 (8 values, we need first 3)
+    if (parts.length < 3) return;
     
     const ch1Val = parseFloat(parts[0]);
     const ch2Val = parseFloat(parts[1]);

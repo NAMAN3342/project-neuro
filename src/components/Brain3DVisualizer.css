@@ -1,0 +1,54 @@
+.brain-3d-visualizer {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0a0a12 0%, #0d1117 50%, #0a0a12 100%);
+  box-shadow: 
+    inset 0 0 60px rgba(0, 255, 255, 0.03),
+    0 0 20px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 255, 255, 0.15);
+}
+
+.brain-3d-visualizer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 255, 0.01) 2px,
+      rgba(0, 255, 255, 0.01) 4px
+    );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.brain-3d-visualizer.light {
+  background: linear-gradient(135deg, #e8eef5 0%, #f0f4f8 50%, #e8eef5 100%);
+  border-color: rgba(100, 150, 200, 0.3);
+  box-shadow: 
+    inset 0 0 60px rgba(100, 150, 200, 0.1),
+    0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.brain-canvas {
+  display: block;
+  cursor: grab;
+  position: relative;
+  z-index: 2;
+}
+
+.brain-canvas:active {
+  cursor: grabbing;
+}

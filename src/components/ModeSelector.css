@@ -1,0 +1,428 @@
+/* === DARK ENTITY MODE SELECTOR === */
+
+.mode-selector {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #030305;
+  overflow: hidden;
+}
+
+.mode-selector.entity-theme {
+  background: linear-gradient(180deg, #020204 0%, #050508 50%, #030305 100%);
+}
+
+.mode-bg-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.mode-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.mode-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Entity Title */
+.entity-title {
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+
+.entity-title .title-whisper {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 8px;
+  color: rgba(100, 50, 120, 0.5);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  animation: whisperPulse 3s ease-in-out infinite;
+}
+
+@keyframes whisperPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+
+.entity-title .title-main {
+  font-family: 'Courier New', monospace;
+  font-size: 42px;
+  font-weight: 200;
+  letter-spacing: 14px;
+  color: rgba(0, 255, 200, 0.9);
+  margin: 0;
+  text-shadow: 
+    0 0 30px rgba(0, 255, 200, 0.5),
+    0 0 60px rgba(0, 255, 200, 0.3);
+  position: relative;
+}
+
+.entity-title .title-main.glitch::before,
+.entity-title .title-main.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.entity-title .title-main.glitch::before {
+  color: rgba(255, 0, 100, 0.7);
+  animation: glitchLeft 4s ease-in-out infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+}
+
+.entity-title .title-main.glitch::after {
+  color: rgba(0, 200, 255, 0.7);
+  animation: glitchRight 3.5s ease-in-out infinite;
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+}
+
+@keyframes glitchLeft {
+  0%, 92%, 100% { transform: translate(0); }
+  93% { transform: translate(-4px, 0); }
+  95% { transform: translate(4px, 0); }
+  97% { transform: translate(-2px, 0); }
+}
+
+@keyframes glitchRight {
+  0%, 90%, 100% { transform: translate(0); }
+  91% { transform: translate(4px, 0); }
+  94% { transform: translate(-4px, 0); }
+  96% { transform: translate(2px, 0); }
+}
+
+/* Hologram Cards Container */
+.hologram-cards {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+/* Hologram Card */
+.hologram-card {
+  position: relative;
+  width: 280px;
+  padding: 24px 20px;
+  background: rgba(0, 15, 25, 0.6);
+  border: 1px solid rgba(0, 255, 200, 0.15);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.hologram-card.center {
+  transform: translateY(-15px);
+}
+
+.hologram-card:not(.locked):hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: var(--card-color);
+  box-shadow: 
+    0 0 20px color-mix(in srgb, var(--card-color) 25%, transparent),
+    0 15px 40px rgba(0, 0, 0, 0.4);
+  background: rgba(0, 20, 30, 0.7);
+}
+
+.hologram-card.center:not(.locked):hover {
+  transform: translateY(-25px) scale(1.02);
+}
+
+.hologram-card.locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.5);
+}
+
+/* Card Frame Corners */
+.card-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.frame-corner {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-color: var(--card-color);
+  border-style: solid;
+  border-width: 0;
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}
+
+.hologram-card:hover .frame-corner {
+  opacity: 0.7;
+}
+
+.frame-corner.tl {
+  top: 8px;
+  left: 8px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+}
+
+.frame-corner.tr {
+  top: 8px;
+  right: 8px;
+  border-top-width: 2px;
+  border-right-width: 2px;
+}
+
+.frame-corner.bl {
+  bottom: 8px;
+  left: 8px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+}
+
+.frame-corner.br {
+  bottom: 8px;
+  right: 8px;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+}
+
+/* Card Content */
+.card-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.card-icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 0 10px var(--card-color));
+  transition: all 0.3s ease;
+}
+
+.hologram-card:hover .card-icon {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 15px var(--card-color));
+}
+
+.card-icon.brain-pulse {
+  animation: brainPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes brainPulse {
+  0%, 100% { 
+    filter: drop-shadow(0 0 10px var(--card-color));
+    transform: scale(1);
+  }
+  50% { 
+    filter: drop-shadow(0 0 20px var(--card-color));
+    transform: scale(1.03);
+  }
+}
+
+.card-title {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0 0 6px 0;
+  letter-spacing: 0.08em;
+}
+
+.card-subtitle {
+  display: block;
+  color: var(--card-color);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+  opacity: 0.8;
+}
+
+.card-desc {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+
+/* Card Action */
+.card-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--card-color);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.3s ease;
+}
+
+.hologram-card:hover .card-action {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.action-line {
+  width: 20px;
+  height: 1px;
+  background: var(--card-color);
+  opacity: 0.7;
+}
+
+.card-locked {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+}
+
+/* Card Effects */
+.card-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, var(--card-color), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hologram-card:hover .card-glow {
+  opacity: 0.05;
+}
+
+.card-scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 20%, var(--card-color) 50%, transparent 80%);
+  opacity: 0;
+  animation: scanlineMove 3s linear infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.hologram-card:hover .card-scanline {
+  opacity: 0.4;
+}
+
+@keyframes scanlineMove {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
+
+/* Entity Instruction */
+.entity-instruction {
+  margin-top: auto;
+  padding: 20px 40px;
+  margin-bottom: 60px;
+}
+
+.instruction-text {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  letter-spacing: 8px;
+  color: rgba(0, 255, 200, 0.5);
+  animation: instructionPulse 3s ease-in-out infinite;
+}
+
+@keyframes instructionPulse {
+  0%, 100% { 
+    opacity: 0.5;
+    text-shadow: 0 0 10px rgba(0, 255, 200, 0.2);
+  }
+  50% { 
+    opacity: 0.8;
+    text-shadow: 0 0 20px rgba(0, 255, 200, 0.4);
+  }
+}
+
+/* Ambient Overlay */
+.ambient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  background: 
+    linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, transparent 20%, transparent 80%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .hologram-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hologram-card {
+    width: 100%;
+    max-width: 340px;
+  }
+  
+  .hologram-card.center {
+    transform: none;
+  }
+  
+  .hologram-card.center:not(.locked):hover {
+    transform: translateY(-12px) scale(1.02);
+  }
+  
+  .entity-title .title-main {
+    font-size: 28px;
+    letter-spacing: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .entity-title .title-main {
+    font-size: 22px;
+    letter-spacing: 6px;
+  }
+  
+  .hologram-card {
+    padding: 24px 20px;
+  }
+  
+  .card-icon {
+    font-size: 3rem;
+  }
+}
