@@ -16,6 +16,11 @@ Project Neuro is a modular Brain Computer Interface (BCI) platform that can reco
 Our objective is to close the gap between costly research equipment and inexpensive, subpar consumer devices. Through the use of a custom 3-channel headband and sophisticated signal processing (the Stockwell Transform) directly in a web browser, we enable users to control devices hands free for example, by blinking to scroll a webpage and visualize their mental state (such as focus or relaxation) with extreme precision. In the end, we are creating a "universal controller" for the human body.
 
 ---
+> Scroll Down too see the working of this Device and Architecture
+
+https://github.com/user-attachments/assets/7b157b8a-8b34-4283-852f-1ad7a49e62b4
+
+---
 
 ## Innovations
 
@@ -133,3 +138,32 @@ Will merge EEG data with Thermal Sensing Technology; this will allow for an accu
 <p align="center">
    <img  width="768" height="857" alt="image" src="https://github.com/NAMAN3342/project-neuro/blob/main/assets/images/main.png" />
 </p>
+
+---
+
+## 🎥 Video Demonstrations
+
+### 1. Device Operation & Live Monitoring
+This video demonstrates the device in action. You can observe live values changing in real-time on the accompanying website (link available in the repository "About" section).
+
+https://github.com/user-attachments/assets/3436feb3-7939-400d-9610-36bbdde0e7f0
+
+### 2. ECG Signal Analysis
+This demonstration visualizes ECG signals captured from the Alpha, Beta, and Gamma nodes, highlighting the origin points of dominant signals.
+
+https://github.com/user-attachments/assets/04b397a4-25dd-42b2-9fbd-30b4e03bb134
+
+**Screen Recording (High Clarity):**
+A direct screen capture of the ECG analysis shown above.
+
+https://github.com/user-attachments/assets/b12f72ad-fc01-4af5-9376-a0f5f2028cb8
+
+### 3. Real-Time BCI (EEG)
+This video demonstrates the Brain-Computer Interface (BCI) operating in real-time using EEG signals captured from the brain.
+
+https://github.com/user-attachments/assets/7464af5f-77b9-47da-a742-9f56f031784c
+
+**Screen Recording (High Clarity):**
+A direct screen capture of the BCI demonstration shown above.
+
+https://github.com/user-attachments/assets/5d752ffa-3619-4fb9-814c-f33a6bdb1ef8
